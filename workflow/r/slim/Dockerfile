@@ -1,15 +1,39 @@
 FROM r-base:4.2.0
 
+RUN apt-get update 
+RUN apt-get install -y git
+
+RUN wget https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.2.5.zip -O awscliv2.zip \
+  && unzip -q awscliv2.zip \
+  && ./aws/install \
+  && rm -rf aws awscliv2.zip
+
+RUN wget https://s3.amazonaws.com/redshift-downloads/drivers/odbc/1.4.27.1000/AmazonRedshiftODBC-64-bit-1.4.27.1000-1.x86_64.deb -O AmazonRedshiftODBC.deb \
+  && apt install ./AmazonRedshiftODBC.deb \
+  && rm ./AmazonRedshiftODBC.deb
+
+COPY odbcinst.ini /etc/odbcinst.ini
+COPY amazon.redshiftodbc.ini /opt/amazon/redshiftodbc/lib/64/amazon.redshiftodbc.ini
+
+ENV ODBCSYSINI=/etc
+ENV AMAZONREDSHIFTODBCINI=/opt/amazon/redshiftodbc/lib/64/amazon.redshiftodbc.ini
+
+RUN wget https://sfc-repo.snowflakecomputing.com/odbc/linux/2.24.4/snowflake-odbc-2.24.4.x86_64.deb -O SnowflakeODBC.deb \
+  && apt install -y ./SnowflakeODBC.deb \
+  && rm ./SnowflakeODBC.deb
+
 # ----------------------------------------
 # Non-Root User Creation!
 # ----------------------------------------
 ARG PEAK_USER_ID
 ENV PEAK_USER_ID=$PEAK_USER_ID
+
 # Add a new user, this must have the UserId of PEAK_USER_ID
 RUN useradd -m -d /home/peak-user -u $PEAK_USER_ID peak-user
 
 # Give the new user the permissions to the directory that it might need
 RUN chown -R peak-user:peak-user /home/peak-user
+RUN chown -R peak-user:peak-user /etc/odbcinst.ini
 
 # Set the working directory
 WORKDIR /home/peak-user

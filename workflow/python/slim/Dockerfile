@@ -1,4 +1,12 @@
-FROM python:3.7
+FROM python:3.8.13
+
+RUN apt-get update
+
+# Install AWS CLI
+RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.2.5.zip" -o "awscliv2.zip" \
+  && unzip -q awscliv2.zip \
+  && ./aws/install \
+  && rm -rf aws awscliv2.zip
 
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
@@ -8,6 +16,7 @@ RUN pip install -r /tmp/requirements.txt
 # ----------------------------------------
 ARG PEAK_USER_ID
 ENV PEAK_USER_ID=$PEAK_USER_ID
+
 # Add a new user, this must have the UserId of PEAK_USER_ID
 RUN useradd -m -d /home/peak-user -u $PEAK_USER_ID peak-user
 
