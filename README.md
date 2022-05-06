@@ -12,7 +12,7 @@
 This repository contains the source code for all the global images available on Peak Platform.
 
 ## Available Images
-### Workflows
+### [Workflows](./workflow)
   - [workflow-python-slim-v1](./workflow/python/slim)
   - [workflow-r-slim-v1](./workflow/r/slim)
 
