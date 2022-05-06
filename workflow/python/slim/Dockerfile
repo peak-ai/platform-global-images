@@ -8,6 +8,7 @@ RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.2.5.zip" 
   && ./aws/install \
   && rm -rf aws awscliv2.zip
 
+# Install all the required Python libraries
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 
