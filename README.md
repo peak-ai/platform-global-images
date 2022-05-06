@@ -14,9 +14,11 @@ This repository contains the source code for all the global images available on 
 ## Available Images
 ### [Workflows](./workflow)
   - [Python](./workflow/python)
-    - [workflow-python-slim-v1](./workflow/python/slim)
+    - [slim](./workflow/python/slim)
+      - [workflow-python-slim-v1](./workflow/python/slim/v1)
   - [R](./workflow/r)
-    - [workflow-r-slim-v1](./workflow/r/slim)
+    - [slim](./workflow/r/slim)
+      - [workflow-r-slim-v1](./workflow/r/slim/v1)
 
 # Contribution
 We would love any contribution that you can make to the images. Read our [contributing guide](./CONTRIBUTING.md) to get familiar with our development process and to start contributing.
