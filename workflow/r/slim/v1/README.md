@@ -1,5 +1,5 @@
 # workflow-r-slim-v1
-This is the smallest Python image that allows users to run workflows.
+This is the smallest R image that allows users to run workflows.
 
 ## Image Details
 ### OS and other basic details
