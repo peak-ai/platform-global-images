@@ -3,7 +3,7 @@ Workflows are the heart of any data processing pipeline that are created on the 
 
 ## Available Images
 We provide Python and R versions of the images. Here are the images that are available:
-- Python
+- [Python](./python)
   - [workflow-python-slim-v1](./python/slim)
-- R
+- [R](./r)
   - [workflow-r-slim-v1](./r/slim)

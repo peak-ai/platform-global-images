@@ -1,7 +1,7 @@
 FROM r-base:4.2.0
 
 RUN apt-get update 
-RUN apt-get install -y git
+RUN apt-get install -y git unixodbc unixodbc-dev
 
 RUN wget https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.2.5.zip -O awscliv2.zip \
   && unzip -q awscliv2.zip \
@@ -21,6 +21,8 @@ ENV AMAZONREDSHIFTODBCINI=/opt/amazon/redshiftodbc/lib/64/amazon.redshiftodbc.in
 RUN wget https://sfc-repo.snowflakecomputing.com/odbc/linux/2.24.4/snowflake-odbc-2.24.4.x86_64.deb -O SnowflakeODBC.deb \
   && apt install -y ./SnowflakeODBC.deb \
   && rm ./SnowflakeODBC.deb
+
+RUN R -e "install.packages('odbc', dependencies=TRUE)"
 
 # ----------------------------------------
 # Non-Root User Creation!

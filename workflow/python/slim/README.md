@@ -1,5 +1,5 @@
 # workflow-python-slim-v1
-This is the smallest Python image that allows can be used to run a workflow.
+This is the smallest Python image that allows users to run workflows.
 
 ## Image Details
 ### OS and other basic details

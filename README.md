@@ -17,7 +17,7 @@ This repository contains the source code for all the global images available on 
   - [workflow-r-slim-v1](./workflow/r/slim)
 
 # Contribution
-We would love any contribution that you can make to images. Read our [contributing guide](./CONTRIBUTING.md) to get familiar with our development process and to start contributing.
+We would love any contribution that you can make to the images. Read our [contributing guide](./CONTRIBUTING.md) to get familiar with our development process and to start contributing.
 
 # License
 [GNU GPL](https://opensource.org/licenses/GPL-3.0)
