@@ -1,11 +1,11 @@
 # Workflows
-Workflows are the heart of any data processing pipeline that are created on the platform. They are used to automate and visualise data processing tasks by creating a series of steps represented as a flowchart or graph.
+Workflows are the heart of any data processing pipeline that is created on the Peak platform. They are used to automate and visualize data processing tasks by creating a series of steps represented as a flowchart or graph.
 
 ## Available Images
 We provide Python and R versions of the images. Here are the images that are available:
 - [Python](./python)
-  - [slim](./python/slim)
-    - [workflow-python-slim-v1](./python/slim/v1)
+  - [barebones](./python/barebones)
+    - [workflow-python-barebones-v1](./python/barebones/v1)
 - [R](./r)
-  - [slim](./r/slim)
-    - [workflow-r-slim-v1](./r/slim/v1)
+  - [barebones](./r/barebones)
+    - [workflow-r-barebones-v1](./r/barebones/v1)
