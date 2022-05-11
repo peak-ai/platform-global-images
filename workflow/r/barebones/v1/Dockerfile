@@ -1,6 +1,6 @@
 FROM r-base:4.2.0
 
-RUN apt-get update & \
+RUN apt-get update && \
   apt-get install -y git unixodbc unixodbc-dev
 
 # Install aws-cli
@@ -10,15 +10,9 @@ RUN wget https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.2.5.zip -O awscl
   && rm -rf aws awscliv2.zip
 
 # Install Redshift ODBC Driver
-RUN wget https://s3.amazonaws.com/redshift-downloads/drivers/odbc/1.4.27.1000/AmazonRedshiftODBC-64-bit-1.4.27.1000-1.x86_64.deb -O AmazonRedshiftODBC.deb \
+RUN wget https://s3.amazonaws.com/redshift-downloads/drivers/odbc/1.4.52.1000/AmazonRedshiftODBC-64-bit-1.4.52.1000-1.x86_64.deb -O AmazonRedshiftODBC.deb \
   && apt install ./AmazonRedshiftODBC.deb \
   && rm ./AmazonRedshiftODBC.deb
-
-COPY odbcinst.ini /etc/odbcinst.ini
-COPY amazon.redshiftodbc.ini /opt/amazon/redshiftodbc/lib/64/amazon.redshiftodbc.ini
-
-ENV ODBCSYSINI=/etc
-ENV AMAZONREDSHIFTODBCINI=/opt/amazon/redshiftodbc/lib/64/amazon.redshiftodbc.ini
 
 # Install Snowflake ODBC Driver
 RUN wget https://sfc-repo.snowflakecomputing.com/odbc/linux/2.24.4/snowflake-odbc-2.24.4.x86_64.deb -O SnowflakeODBC.deb \
@@ -40,6 +34,15 @@ RUN useradd -m -d /home/peak-user -u $PEAK_USER_ID peak-user
 # Give the new user the permissions to the directory that it might need
 RUN chown -R peak-user:peak-user /home/peak-user
 RUN chown -R peak-user:peak-user /etc/odbcinst.ini
+
+# Copy all ODBC files to user's home directory
+
+COPY redshift-odbcinst.ini /home/peak-user/redshift/odbcinst.ini 
+COPY amazon.redshiftodbc.ini /home/peak-user/redshift/amazon.redshiftodbc.ini
+COPY snowflake-odbcinst.ini /home/peak-user/snowflake/odbcinst.ini
+
+ENV AMAZONREDSHIFTODBCINI=/home/peak-user/redshift/amazon.redshiftodbc.ini
+ENV ODBCSYSINI=/home/peak-user
 
 # Set the working directory
 WORKDIR /home/peak-user

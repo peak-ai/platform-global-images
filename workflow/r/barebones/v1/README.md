@@ -25,6 +25,14 @@ snowflake-odbc-drive    2.24.4
 odbc                    1.3.3
 ```
 
+### Environment Variables
+- `AMAZONREDSHIFTODBCINI`: This represents the location of `amazon.redshiftodbc.ini` file and is set to `/home/peak-user/redshift/amazon.redshiftodbc.ini` as we have added the file there.
+- `ODBCSYSINI`: This represents the location of `odbcinst.ini` file and is set to `/home/peak-user` by default.
+
+### ODBC Setup
+- The `odbcinst.init` files for Redshift and Snowflake can be found at `/home/peak-user/redshift` and `/home/peak-user/snowflake` respectively.
+- When using the image, either set the proper value in `ODBCSYSINI` env variable or copy the required file to the `/home/peak-user` directoy.
+
 ### Build Arguments
 The Dockerfile expects the following build arguments:
 - `PEAK_USER_ID`: This is the default user that the workflow step runs with when this image is used in the Peak platform. On the Peak platform, this value must be `8877`.
