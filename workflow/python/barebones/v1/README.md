@@ -27,7 +27,7 @@ sqlalchemy     1.4.36
 
 ### Build Arguments
 The Dockerfile expects the following build arguments:
-- `PEAK_USER_ID`: This is the default user that the workflow step runs with when this image is used in the Peak platform. On the Peak platform, this value must be `8877`.
+- `PEAK_USER_ID`: This is the default user that the workflow step runs with when this image is used in the Peak platform. On the Peak platform, this value must be `8877`. Inside the image we create a new user with this user id which is then used when running the image across various services in the Peak Platform.
 
 ## Building the Image
 Building the image is quite straightforward, just run the docker build command passing in the required build arguments.
