@@ -33,15 +33,13 @@ RUN useradd -m -d /home/peak-user -u $PEAK_USER_ID peak-user
 
 # Give the new user the permissions to the directory that it might need
 RUN chown -R peak-user:peak-user /home/peak-user
-RUN chown -R peak-user:peak-user /etc/odbcinst.ini
 
 # Copy all ODBC files to user's home directory
 
-COPY redshift-odbcinst.ini /home/peak-user/redshift/odbcinst.ini 
-COPY amazon.redshiftodbc.ini /home/peak-user/redshift/amazon.redshiftodbc.ini
-COPY snowflake-odbcinst.ini /home/peak-user/snowflake/odbcinst.ini
+COPY odbcinst.ini /home/peak-user/odbcinst.ini 
+COPY amazon.redshiftodbc.ini /home/peak-user/amazon.redshiftodbc.ini
 
-ENV AMAZONREDSHIFTODBCINI=/home/peak-user/redshift/amazon.redshiftodbc.ini
+ENV AMAZONREDSHIFTODBCINI=/home/peak-user/amazon.redshiftodbc.ini
 ENV ODBCSYSINI=/home/peak-user
 
 # Set the working directory

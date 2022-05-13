@@ -30,8 +30,7 @@ odbc                    1.3.3
 - `ODBCSYSINI`: This represents the location of `odbcinst.ini` file and is set to `/home/peak-user` by default.
 
 ### ODBC Setup
-- The `odbcinst.init` files for Redshift and Snowflake can be found at `/home/peak-user/redshift` and `/home/peak-user/snowflake` respectively.
-- When using the image, either set the proper value in `ODBCSYSINI` env variable or copy the required file to the `/home/peak-user` directoy.
+- The `odbcinst.ini` file exists in the `/home/peak-user` directory, and the `ODBCSYSINI` env has been set accordingly.
 
 ### Build Arguments
 The Dockerfile expects the following build arguments:
