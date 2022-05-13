@@ -1,24 +1,14 @@
-FROM python:3.7
-ARG REDSHIFT_IAM_ROLE
-ARG REDSHIFT_HOST
-ARG REDSHIFT_PORT
-ARG REDSHIFT_USERNAME
-ARG REDSHIFT_PASSWORD
-ARG DATA_LAKE
-ARG DATA_LAKE_TYPE
-ARG DATA_LAKE_ROOT_PATH
-ARG TENANT
-ARG STAGE
-ENV REDSHIFT_IAM_ROLE=$REDSHIFT_IAM_ROLE \
-REDSHIFT_HOST=$REDSHIFT_HOST \
-REDSHIFT_PORT=$REDSHIFT_PORT \
-REDSHIFT_USERNAME=$REDSHIFT_USERNAME \
-REDSHIFT_PASSWORD=$REDSHIFT_PASSWORD \
-DATA_LAKE=$DATA_LAKE \
-DATA_LAKE_TYPE=$DATA_LAKE_TYPE \
-DATA_LAKE_ROOT_PATH=$DATA_LAKE_ROOT_PATH \
-TENANT=$TENANT \
-STAGE=$STAGE
+FROM python:3.8.13
+
+RUN apt-get update
+
+# Install AWS CLI
+RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.2.5.zip" -o "awscliv2.zip" \
+  && unzip -q awscliv2.zip \
+  && ./aws/install \
+  && rm -rf aws awscliv2.zip
+
+# Install all the required Python libraries
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 
@@ -27,6 +17,7 @@ RUN pip install -r /tmp/requirements.txt
 # ----------------------------------------
 ARG PEAK_USER_ID
 ENV PEAK_USER_ID=$PEAK_USER_ID
+
 # Add a new user, this must have the UserId of PEAK_USER_ID
 RUN useradd -m -d /home/peak-user -u $PEAK_USER_ID peak-user
 
