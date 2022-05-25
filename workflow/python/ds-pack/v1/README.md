@@ -1,5 +1,5 @@
-# workflow-python-barebones-v1
-This is the smallest Python image that allows users to run workflows.
+# workflow-python-ds-pack-v1
+This image contains a set of most used dependencies
 
 ## Image Details
 ### Base Image
@@ -20,9 +20,13 @@ git            3.8.8
 
 ### Python Libraries Installed
 ```
-boto3          1.22.7
-psycopg2       2.9.3
-sqlalchemy     1.4.36
+boto3                         1.23.7
+pandas                        1.4.2
+psycopg2                      2.9.3
+snowflake                     0.0.3
+snowflake-connector-python    2.7.7
+sklearn                       0.0
+SQLAlchemy                    1.4.36
 ```
 
 ### Build Arguments
@@ -32,7 +36,7 @@ The Dockerfile expects the following build arguments:
 ## Building the Image
 Building the image is quite straightforward, just run the docker build command passing in the required build arguments.
 ```
-docker build . -t workflow-python-barebones-v1 --build-arg PEAK_USER_ID=8877
+docker build . -t workflow-python-ds-pack-v1 --build-arg PEAK_USER_ID=8877
 ```
 
 ## Using the Image

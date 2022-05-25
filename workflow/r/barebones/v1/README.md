@@ -17,7 +17,7 @@ R              4.2.0
 aws-cli                 2.2.5
 git                     2.35.1
 redshift-odbc-driver    1.4.27.1000
-snowflake-odbc-drive    2.24.4
+snowflake-odbc-driver   2.24.4
 ```
 
 ### R Libraries Installed
