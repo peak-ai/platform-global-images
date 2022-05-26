@@ -16,6 +16,7 @@ Python         3.8.13
 ```
 aws-cli        2.2.5
 git            3.8.8
+jq             1.6
 ```
 
 ### Python Libraries Installed
