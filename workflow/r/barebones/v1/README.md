@@ -32,7 +32,7 @@ odbc                    1.3.3
 ### ODBC Setup
 - The `odbcinst.ini` file exists in the `/home/peak-user` directory, and the `ODBCSYSINI` env has been set accordingly.
 
-You can find more details about setting up ODBC [here](https://docs.aws.amazon.com/redshift/latest/mgmt/configure-odbc-connection.html).
+You can find more details about setting up ODBC for `redshift` [here](https://docs.aws.amazon.com/redshift/latest/mgmt/configure-odbc-connection.html). For `snowflake` more details can be found [here](https://docs.snowflake.com/en/user-guide/odbc-linux.html)
 
 ### Build Arguments
 The Dockerfile expects the following build arguments:
