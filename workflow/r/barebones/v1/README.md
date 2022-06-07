@@ -1,9 +1,9 @@
 # workflow-r-barebones-v1
-This is the smallest R image that allows users to run workflows.
+This is the smallest R image that allows users to run workflows. This contains the minimal set of packages installed that allows users to make the most of workflows.
 
 ## Image Details
 ### Base Image
-This image uses `r-base:4.2.0` as its base which is maintained by [the Rocker Community](https://github.com/rocker-org/rocker).
+This image uses [r-base:4.2.0](https://hub.docker.com/layers/r-base/library/r-base/4.2.0/images/sha256-42c5988e209690d334d3d0117bbabd932a33106f726603642a8612b584de8644?context=explore) as its base which is maintained by [the Rocker Community](https://github.com/rocker-org/rocker).
 
 ### OS and other basic details
 ```
@@ -17,7 +17,7 @@ R              4.2.0
 aws-cli                 2.2.5
 git                     2.35.1
 redshift-odbc-driver    1.4.27.1000
-snowflake-odbc-drive    2.24.4
+snowflake-odbc-driver   2.24.4
 ```
 
 ### R Libraries Installed
@@ -32,15 +32,21 @@ odbc                    1.3.3
 ### ODBC Setup
 - The `odbcinst.ini` file exists in the `/home/peak-user` directory, and the `ODBCSYSINI` env has been set accordingly.
 
+You can find more details about setting up ODBC for `redshift` [here](https://docs.aws.amazon.com/redshift/latest/mgmt/configure-odbc-connection.html). For `snowflake` more details can be found [here](https://docs.snowflake.com/en/user-guide/odbc-linux.html)
+
 ### Build Arguments
 The Dockerfile expects the following build arguments:
 - `PEAK_USER_ID`: This is the default user that the workflow step runs with when this image is used in the Peak platform. On the Peak platform, this value must be `8877`. Inside the image we create a new user with this user id which is then used when running the image across various services in the Peak Platform.
 
+You can find more details about build arguments in the [Docker documentation](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables---build-arg).
+
 ## Building the Image
-Building the image is quite straightforward, just run the docker build command passing in the required build arguments.
+To build the image locally just run the docker build command passing in the required build arguments.
 ```
 docker build . -t workflow-r-barebones-v1 -build-arg PEAK_USER_ID=8877
 ```
+You can find more details about building an image in the [Docker documentation](https://docs.docker.com/engine/reference/commandline/build/).
+You can find more details about building an image in the [Docker documentation](https://docs.docker.com/engine/reference/commandline/build/).
 
 ## Using the Image
 - The image can be directly used by using it in the workflow step form.

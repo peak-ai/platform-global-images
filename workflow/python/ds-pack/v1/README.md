@@ -1,5 +1,5 @@
-# workflow-python-barebones-v1
-This is the smallest Python image that allows users to run workflows. This contains the minimal set of packages installed that allows users to make the most of workflows.
+# workflow-python-ds-pack-v1
+This is the Data Science pack Python image made for workflows. On top of the barebones Python image this contains a set of most-commonly used dependencies.
 
 ## Image Details
 ### Base Image
@@ -16,13 +16,18 @@ Python         3.8.13
 ```
 aws-cli        2.2.5
 git            3.8.8
+jq             1.6
 ```
 
 ### Python Libraries Installed
 ```
-boto3          1.22.7
-psycopg2       2.9.3
-sqlalchemy     1.4.36
+boto3                         1.23.7
+pandas                        1.4.2
+psycopg2                      2.9.3
+snowflake                     0.0.3
+snowflake-connector-python    2.7.7
+sklearn                       0.0
+SQLAlchemy                    1.4.36
 ```
 
 ### Build Arguments
@@ -34,9 +39,10 @@ You can find more details about build arguments in the [Docker documentation](ht
 ## Building the Image
 To build the image locally just run the docker build command passing in the required build arguments.
 ```
-docker build . -t workflow-python-barebones-v1 --build-arg PEAK_USER_ID=8877
+docker build . -t workflow-python-ds-pack-v1 --build-arg PEAK_USER_ID=8877
 ```
+You can find more details about building an image in the [Docker documentation](https://docs.docker.com/engine/reference/commandline/build/).
 
 ## Using the Image
 - The image can be directly used by using it in the workflow step form.
-- If you need to install a few more dependencies, or add some use case-specific environment variables into the image, the image can easily be extended.
+- If you need to install a few more dependencies, or add some use case-specific environment variables into the image, the image can easily to extended.
