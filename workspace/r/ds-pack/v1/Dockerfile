@@ -60,6 +60,7 @@ RUN apt-get update \
 
 # Install Python + all required packages
 COPY install_packages.sh /tmp/install_packages.sh
+COPY install_r_packages.R /tmp/install_r_packages.R
 RUN bash /tmp/install_packages.sh
 
 # install AWS CLI v2

@@ -1,0 +1,26 @@
+install.packages(
+  c (
+    'reticulate',
+    'rlang',
+    'DBI',
+    'odbc',
+    'shiny',
+    'shinydashboard',
+    'shinyWidgets',
+    'shinycssloaders',
+    'shinyjs',
+    'dplyr',
+    'plotly',
+    'ggplot2',
+    'DT',
+    'stringr',
+    'stringi',
+    'tidyr',
+    'lubridate',
+    'glue',
+    'scales',
+    'tidymodels'
+  ),
+  dependencies=TRUE,
+  lib='/usr/local/lib/R/library'
+)

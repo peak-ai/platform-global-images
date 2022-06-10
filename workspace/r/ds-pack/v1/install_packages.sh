@@ -29,28 +29,7 @@ mkdir -p ${WORKON_HOME}
 python -m venv ${PYTHON_VENV_PATH}
 
 echo 'options(repos = c(CRAN = "https://CRAN.R-project.org"))' >> ${R_HOME}/etc/Rprofile.site
-
-install2.r -l /usr/local/lib/R/library --skipinstalled --error \
-    reticulate \
-    rlang \
-    DBI \
-    odbc \
-    shiny \
-    shinydashboard \
-    shinyWidgets \
-    shinycssloaders \
-    shinyjs \
-    dplyr \
-    plotly \
-    ggplot2 \
-    DT \
-    stringr \
-    stringi \
-    tidyr \
-    lubridate \
-    glue \
-    scales \
-    tidymodels
+Rscript install_r_packages.R
 
 ## Ensure RStudio inherits this env var
 echo "" >> ${R_HOME}/etc/Renviron
