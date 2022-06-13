@@ -64,7 +64,7 @@ COPY install_r_packages.R /tmp/install_r_packages.R
 RUN bash /tmp/install_packages.sh
 
 # install AWS CLI v2
-RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.2.5.zip" -o "awscliv2.zip" \
+RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.4.zip" -o "awscliv2.zip" \
     && unzip -q awscliv2.zip \
     && ./aws/install \
     && rm -rf aws awscliv2.zip

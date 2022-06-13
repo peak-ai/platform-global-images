@@ -7,22 +7,52 @@ This image uses [rocker/verse:4.2.0](https://hub.docker.com/layers/verse/rocker/
 
 ### OS and other basic details
 ```
-Debian         bookworm/sid
-Linux Kernel   5.10.104-linuxkit
+Ubuntu         20.04.4 LTS (Focal Fossa)
+Linux Kernel   4.14.276-211.499.amzn2.x86_64
 R              4.2.0
 ```
 
 ### Linux Packages Installed
 ```
 aws-cli                 2.2.5
-git                     2.35.1
+curl                    7.68.0
+git                     2.25.1
+jq                      1.6
+nano                    4.8
+vim                     8.1
+fish                    3.1.0
+zsh                     5.8
+docker                  20.10.17
+htop                    2.2.0
+pandoc                  2.17.1.1
+less                    551
+latex                   3.141592653-2.6-1.40.24
 redshift-odbc-driver    1.4.27.1000
 snowflake-odbc-driver   2.24.4
 ```
 
 ### R Libraries Installed
 ```
-odbc                    1.3.3
+reticulate          1.25
+rlang               1.0.2
+DBI                 1.1.2
+odbc                1.3.3
+shiny               1.7.1
+shinydashboard      0.7.2
+shinyWidgets        0.7.0
+shinycssloaders     1.0.0
+shinyjs             2.1.0
+dplyr               1.0.9
+plotly              4.10.0
+ggplot2             3.3.6
+DT                  0.23
+stringr             1.4.0
+stringi             1.7.6
+tidyr               1.2.0
+lubridate           1.8.0
+glue                1.6.2
+scales              1.2.0
+tidymodels          0.2.0
 ```
 
 ### Environment Variables

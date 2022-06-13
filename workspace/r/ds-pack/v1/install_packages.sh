@@ -29,6 +29,9 @@ mkdir -p ${WORKON_HOME}
 python -m venv ${PYTHON_VENV_PATH}
 
 echo 'options(repos = c(CRAN = "https://CRAN.R-project.org"))' >> ${R_HOME}/etc/Rprofile.site
+
+# /usr/local/lib/R/site-library gets overwritten when the image is run in workspace
+# But it can interfere while installation, therefore clearing out the folder!
 rm -rf /usr/local/lib/R/site-library
 Rscript /tmp/install_r_packages.R
 
@@ -36,7 +39,6 @@ Rscript /tmp/install_r_packages.R
 echo "" >> ${R_HOME}/etc/Renviron
 echo "WORKON_HOME=${WORKON_HOME}" >> ${R_HOME}/etc/Renviron
 echo "RETICULATE_MINICONDA_ENABLED=${RETICULATE_MINICONDA_ENABLED}" >> ${R_HOME}/etc/Renviron
-
 
 ## symlink these so that these are available when switching to a new venv
 ## -f check for file, -L for link, -e for either
