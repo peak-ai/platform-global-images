@@ -22,5 +22,6 @@ install.packages(
     'tidymodels'
   ),
   dependencies=TRUE,
-  lib='/usr/local/lib/R/library'
+  lib='/usr/local/lib/R/library',
+  Ncpus=4
 )
