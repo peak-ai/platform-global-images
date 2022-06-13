@@ -29,6 +29,7 @@ mkdir -p ${WORKON_HOME}
 python -m venv ${PYTHON_VENV_PATH}
 
 echo 'options(repos = c(CRAN = "https://CRAN.R-project.org"))' >> ${R_HOME}/etc/Rprofile.site
+rm -rf /usr/local/lib/R/site-library
 Rscript /tmp/install_r_packages.R
 
 ## Ensure RStudio inherits this env var
