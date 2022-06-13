@@ -1,5 +1,6 @@
 install.packages(
   c (
+    'Rcpp',
     'reticulate',
     'rlang',
     'DBI',
