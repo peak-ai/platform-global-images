@@ -21,6 +21,8 @@ This repository contains the source code for all the global images available on 
   - [R](./workflow/r)
     - [barebones](./workflow/r/barebones)
       - [workflow-r-barebones-v1](./workflow/r/barebones/v1)
+    - [ds-pack](./workflow/r/ds-pack)
+      - [workflow-r-ds-pack-v1](./workflow/r/ds-pack/v1)
 
 ## Images and the Peak Platform
 All these images are meant to help you get the best out of the Peak platform (though they can of course be used outside the Peak platform pretty easily).
