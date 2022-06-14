@@ -32,28 +32,7 @@ snowflake-odbc-driver   2.24.4
 ```
 
 ### R Libraries Installed
-```
-reticulate          1.25
-rlang               1.0.2
-DBI                 1.1.2
-odbc                1.3.3
-shiny               1.7.1
-shinydashboard      0.7.2
-shinyWidgets        0.7.0
-shinycssloaders     1.0.0
-shinyjs             2.1.0
-dplyr               1.0.9
-plotly              4.10.0
-ggplot2             3.3.6
-DT                  0.23
-stringr             1.4.0
-stringi             1.7.6
-tidyr               1.2.0
-lubridate           1.8.0
-glue                1.6.2
-scales              1.2.0
-tidymodels          0.2.0
-```
+None
 
 ### Environment Variables
 - `AMAZONREDSHIFTODBCINI`: This represents the location of `amazon.redshiftodbc.ini` file and is set to `/opt/amazon/redshiftodbc/lib/64/amazon.redshiftodbc.ini` as we have added the file there.
@@ -73,4 +52,4 @@ You can find more details about building an image in the [Docker documentation](
 
 ## Using the Image
 - The image can be directly used by using it in the workspace form.
-- If you need to install a few more dependencies, or add some use case-specific environment variables into the image, the image can easily to extended.
+- If you need to install a few more dependencies, or add some use case-specific environment variables into the image, the image can easily be extended.

@@ -28,13 +28,6 @@ python -m pip --no-cache-dir install --upgrade \
 mkdir -p ${WORKON_HOME}
 python -m venv ${PYTHON_VENV_PATH}
 
-echo 'options(repos = c(CRAN = "https://CRAN.R-project.org"))' >> ${R_HOME}/etc/Rprofile.site
-
-# /usr/local/lib/R/site-library gets overwritten when the image is run in workspace
-# But it can interfere while installation, therefore clearing out the folder!
-rm -rf /usr/local/lib/R/site-library
-Rscript /tmp/install_r_packages.R
-
 ## Ensure RStudio inherits this env var
 echo "" >> ${R_HOME}/etc/Renviron
 echo "WORKON_HOME=${WORKON_HOME}" >> ${R_HOME}/etc/Renviron
