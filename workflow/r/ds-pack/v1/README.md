@@ -1,5 +1,5 @@
 # workflow-r-ds-pack-v1
-This is the smallest R image that allows users to run workflows. This contains the minimal set of packages installed that allows users to make the most of workflows.
+This is the Data Science pack R image made for workflows. On top of the barebones R image this contains a set of most-commonly used dependencies.
 
 ## Image Details
 ### Base Image
@@ -22,7 +22,25 @@ snowflake-odbc-driver   2.24.4
 
 ### R Libraries Installed
 ```
-odbc                    1.3.3
+rlang               1.0.2
+DBI                 1.1.2
+odbc                1.3.3
+shiny               1.7.1
+shinydashboard      0.7.2
+shinyWidgets        0.7.0
+shinycssloaders     1.0.0
+shinyjs             2.1.0
+dplyr               1.0.9
+plotly              4.10.0
+ggplot2             3.3.6
+DT                  0.23
+stringr             1.4.0
+stringi             1.7.6
+tidyr               1.2.0
+lubridate           1.8.0
+glue                1.6.2
+scales              1.2.0
+tidymodels          0.2.0
 ```
 
 ### Environment Variables

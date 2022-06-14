@@ -12,7 +12,7 @@ We provide Python and R versions of the images. Here are the images that are ava
   - [barebones](./r/barebones)
     - [workflow-r-barebones-v1](./r/barebones/v1)
   - [ds-pack](./r/ds-pack)
-    - [workflow-python-ds-pack-v1](./r/ds-pack/v1/) 
+    - [workflow-r-ds-pack-v1](./r/ds-pack/v1/) 
 
 ## Important
 - Every workflow image must set up a non-root user. Details for the same can be found [here](../knowledge-base/non-root-user.md).
