@@ -22,7 +22,7 @@ nano           3.2
 vim            8.1
 fish           3.0.2
 zsh            5.7.1
-R              3.5.2
+R              4.2.0
 node           16.15.1
 docker         20.10.17
 htop           2.2.0
@@ -33,9 +33,7 @@ latex          3.14159265-2.6-1.40.19
 
 ### Python Libraries Installed
 ```
-boto3                               1.23.7
 ipywidgets                          7.6.5
-jupyter-lsp                         1.5.1
 jupyter-server-proxy                3.2.1
 jupyterhub                          1.4.2
 jupyterlab-git                      0.32.4
@@ -47,18 +45,12 @@ lckr-jupyterlab-variableinspector   3.0.9
 mypy-ls                             0.5.1
 nbconvert                           6.2.0
 notebook                            6.4.3
-pandas                              1.4.2
-psycopg2                            2.9.3
 pyls-black                          0.4.7
 pyls-flake8                         0.4.0
 pyls-isort                          0.2.2
 pyls-mypy                           0.1.8
 python-lsp-black                    1.0.0
 python-lsp-server[all]              1.4.1
-scikit-learn                        1.1.1
-snowflake-connector-python[pandas]  2.7.7
-snowflake                           0.0.3
-SQLAlchemy                          1.4.36
 virtualenv                          20.8.1
 ```
 
