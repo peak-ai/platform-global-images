@@ -1,22 +1,26 @@
-install.packages('rlang', version = '1.0.0')
-install.packages('DBI')
-install.packages('odbc')
-
-install.packages('shiny')
-install.packages('shinydashboard')
-install.packages('shinyWidgets')
-install.packages('shinycssloaders')
-install.packages('shinyjs')
-install.packages('dplyr')
-
-install.packages('plotly')
-install.packages('ggplot2')
-install.packages('DT')
-
-install.packages('stringr')
-install.packages('stringi')
-install.packages('tidyr')
-install.packages('lubridate')
-install.packages('glue')
-install.packages('scales')
-install.packages('tidymodels')
+install.packages(
+  c (
+    'rlang',
+    'DBI',
+    'odbc',
+    'shiny',
+    'shinydashboard',
+    'shinyWidgets',
+    'shinycssloaders',
+    'shinyjs',
+    'dplyr',
+    'plotly',
+    'ggplot2',
+    'DT',
+    'stringr',
+    'stringi',
+    'tidyr',
+    'lubridate',
+    'glue',
+    'scales',
+    'tidymodels'
+  ),
+  dependencies=TRUE,
+  lib='/usr/local/lib/R/library',
+  Ncpus=4
+)
