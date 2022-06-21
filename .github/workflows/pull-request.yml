@@ -1,7 +1,9 @@
 name: Trigger deployment on pull request and changes to pr
 on:
-  pull_request:
-    types: [opened, edited, synchronize]
+  # pull_request:
+  #   types: [opened, edited, synchronize]\
+  push
+    
 
 jobs:
   deploy:
