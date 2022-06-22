@@ -7,6 +7,9 @@ jobs:
   deploy:
     name: Trigger image scanning
     runs-on: ubuntu-latest
+    env:
+      PEAK_USER_ID: 8877
+      BRANCH: ${{ github.head_ref }}
 
     steps:
       - name: Checkout
@@ -26,6 +29,14 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"
           done
+    
+      - name: Run docker build on changed images
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            tag=$(echo $file | tr / -)
+            echo "Building $file"
+            docker build $file --build-arg PEAK_USER_ID=$PEAK_USER_ID -t $tag
+          done
       
       # - name: Set up Docker Buildx
       #   uses: docker/setup-buildx-action@v1
@@ -37,10 +48,24 @@ jobs:
       #     push: true
       #     tags: user/app:latest
 
-      - name: Run snyk scan on changed folders
+      - name: Run snyk scan on changed images
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             tag=$(echo $file | tr / -)
-            docker build $file --build-arg PEAK_USER_ID=8877 -t $tag
-            npx snyk container test $file --json
+            npx snyk container test $tag --json
+            cat op.json | snyk-to-html -o /tmp/$BRANCH/$tag.html
           done
+      
+      - name: Push scan results to github pages
+        run: |
+          mkdir /tmp/gh-pages && cd /tmp/gh-pages
+          git init && git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git checkout -b gh-pages
+          git pull origin gh-pages
+          git config --local user.email "scanner@peak.ai"
+          git config --local user.name "github-actions[bot]"
+          rm -rf $BRANCH
+          cp -R /tmp/$BRANCH $BRANCH
+          git add $BRANCH
+          git commit -m "Add file for ${BRANCH}"
+          git push origin gh-pages 
