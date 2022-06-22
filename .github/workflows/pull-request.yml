@@ -26,3 +26,9 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"
           done
+      
+      - name: Run snyk scan on changed folders
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            npx snyk container test $file --json
+          done
