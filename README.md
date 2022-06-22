@@ -1,6 +1,5 @@
 <img src=".github/images/peak.gif" width="100" height="100" />
 
-Test
 # Peak Platform Global Images
 ![](https://img.shields.io/github/license/peak-ai/platform-global-images)
 ![](https://img.shields.io/github/languages/count/peak-ai/platform-global-images)

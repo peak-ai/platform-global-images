@@ -35,7 +35,6 @@ RUN useradd -m -d /home/peak-user -u $PEAK_USER_ID peak-user
 RUN chown -R peak-user:peak-user /home/peak-user
 
 # Copy all ODBC files to user's home directory
-
 COPY odbcinst.ini /home/peak-user/odbcinst.ini 
 COPY amazon.redshiftodbc.ini /home/peak-user/amazon.redshiftodbc.ini
 

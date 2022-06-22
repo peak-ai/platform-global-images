@@ -20,6 +20,7 @@ jobs:
         with:
           files_ignore: |
             *.md
+            .github/workflows
           dir_names: true
 
       - name: List all changed files
