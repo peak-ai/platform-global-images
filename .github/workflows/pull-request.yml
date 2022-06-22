@@ -15,8 +15,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Get changed files
-        id: changed-files
+      - name: Get changed directories
+        id: changed-directories
         uses: tj-actions/changed-files@v23
         with:
           files_ignore: |
@@ -24,18 +24,18 @@ jobs:
             .github/workflows
           dir_names: true
 
-      - name: List all changed folders
+      - name: List all changed directories/images
         run: |
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            echo "$file was changed"
+          for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
+            echo "$directory was changed"
           done
     
       - name: Run docker build on changed images
         run: |
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            tag=$(echo $file | tr / -)
-            echo "Building $file"
-            docker build $file --build-arg PEAK_USER_ID=$PEAK_USER_ID -t $tag
+          for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
+            tag=$(echo $directory | tr / -)
+            echo "Building $directory"
+            docker build $directory --build-arg PEAK_USER_ID=$PEAK_USER_ID -t $tag
           done
       
       # - name: Set up Docker Buildx
@@ -50,8 +50,8 @@ jobs:
 
       - name: Run snyk scan on changed images
         run: |
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            tag=$(echo $file | tr / -)
+          for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
+            tag=$(echo $directory | tr / -)
             npx snyk container test $tag --json
             cat op.json | snyk-to-html -o /tmp/$BRANCH/$tag.html
           done
