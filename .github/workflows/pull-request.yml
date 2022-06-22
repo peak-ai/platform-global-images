@@ -1,9 +1,7 @@
 name: Trigger image scanning on pull request and changes to pr
 on:
-  # pull_request:
-  #   types: [opened, edited, synchronize]\
-  push
-    
+  pull_request:
+    types: [opened, edited, synchronize]
 
 jobs:
   deploy:
