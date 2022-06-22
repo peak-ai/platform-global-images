@@ -27,8 +27,20 @@ jobs:
             echo "$file was changed"
           done
       
+      # - name: Set up Docker Buildx
+      #   uses: docker/setup-buildx-action@v1
+
+      # - name: Build
+      #   uses: docker/build-push-action@v3
+      #   with:
+      #     context: .
+      #     push: true
+      #     tags: user/app:latest
+
       - name: Run snyk scan on changed folders
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            tag=$(echo $file | tr / -)
+            docker build $file --build-arg PEAK_USER_ID=8877 -t $tag
             npx snyk container test $file --json
           done
