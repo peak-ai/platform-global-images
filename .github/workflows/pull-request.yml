@@ -1,4 +1,4 @@
-name: Trigger deployment on pull request and changes to pr
+name: Trigger image scanning on pull request and changes to pr
 on:
   # pull_request:
   #   types: [opened, edited, synchronize]\
