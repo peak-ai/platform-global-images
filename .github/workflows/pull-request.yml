@@ -11,6 +11,7 @@ jobs:
       PEAK_USER_ID: 8877
       BRANCH: ${{ github.head_ref }}
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      GH_PAGES_BASE_URL: https://peak-ai.github.io/platform-global-images
 
     steps:
       - name: Checkout
@@ -59,9 +60,9 @@ jobs:
             mkdir -p /tmp/$BRANCH
             touch /tmp/$BRANCH/$tag.html
             npx snyk-to-html -i output.json -o /tmp/$BRANCH/$tag.html -s
-            changed_images=$changed_images\n$BRANCH/$tag.html
+            changed_images=$GH_PAGES_BASE_URL/$BRANCH/$tag.html, $changed_images
           done
-          echo "::set-output changed_images=::$changed_images"
+          echo "::set-output name=changed_images::$changed_images"
       - name: Push scan results to github pages
         run: |
           mkdir /tmp/gh-pages && cd /tmp/gh-pages
