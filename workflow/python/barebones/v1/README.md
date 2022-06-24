@@ -3,21 +3,21 @@ This is the smallest Python image that allows users to run workflows. This conta
 
 ## Image Details
 ### Base Image
-This image uses [python:3.10.5-slim-buster](https://hub.docker.com/layers/python/library/python/3.10.5-slim-buster/images/sha256-e826527702aa0f69734a796bc950943106c6edf78e6c7ffc13c4d70d4025fa15?context=explore) as its base which is maintained by [the Docker Community](https://github.com/docker-library/python).
+This image uses [python:3.10.4-slim-bullseye](https://hub.docker.com/layers/python/library/python/3.10.4-slim-bullseye/images/sha256-b4473ae501f273874a4379f489ea0270dd4dd479d26c72d6d520fb4e717493c6?context=explore) as its base which is maintained by [the Docker Community](https://github.com/docker-library/python).
 
 ### OS and other basic details
 ```
-Debian         GNU/Linux 10 (buster)
+Debian         GNU/Linux 11 (bullseye)
 Linux Kernel   5.10.104-linuxkit
-Python         3.8.13
+Python         3.10.4
 ```
 
 ### Linux Packages Installed
 ```
 aws-cli        2.2.5
-curl           7.64.0
-git            2.20.1
-jq             1.5-1-a5b5cbe
+curl           7.74.0
+git            2.30.2
+jq             1.6
 ```
 
 ### Python Libraries Installed
