@@ -56,6 +56,7 @@ jobs:
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             tag=$(echo $directory | tr / -)
             npx snyk container test $tag --json >> output.json
+            mkdir -p /tmp/$BRANCH
             touch /tmp/$BRANCH/$tag.html
             npx snyk-to-html -i output.json -o /tmp/$BRANCH/$tag.html -s
           done
