@@ -55,12 +55,13 @@ jobs:
           npx snyk auth $SNYK_TOKEN
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             tag=$(echo $directory | tr / -)
-            npx snyk container test $tag --json --file $directory/Dockerfile >> output.json
+            npx snyk container test $tag --json >> output.json
             mkdir -p /tmp/$BRANCH
             touch /tmp/$BRANCH/$tag.html
             npx snyk-to-html -i output.json -o /tmp/$BRANCH/$tag.html -s
+            changed_images=$changed_images\n$BRANCH/$tag.html
           done
-      
+          echo "::set-output changed_images=::$changed_images"
       - name: Push scan results to github pages
         run: |
           mkdir /tmp/gh-pages && cd /tmp/gh-pages
@@ -80,7 +81,10 @@ jobs:
         with:
           message: |
             **This is an autogenated comment**
-            A snyk scan was performed on the changed images (${{ steps.changed-directories.outputs.all_changed_files }})
+            A snyk scan was performed on the changed images.
+            These include - (${{ steps.changed-directories.outputs.all_changed_files }})
+            Reports for the above can be found at:
+            ${{steps.changed-directories.outputs.changed_images}}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
