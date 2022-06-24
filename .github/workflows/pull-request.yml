@@ -55,8 +55,9 @@ jobs:
           npx snyk auth $SNYK_TOKEN
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             tag=$(echo $directory | tr / -)
-            npx snyk container test $tag --json >> output.json 
-            cat output.json | npx snyk-to-html -o /tmp/$BRANCH/$tag.html
+            npx snyk container test $tag --json >> output.json
+            touch /tmp/$BRANCH/$tag.html
+            npx snyk-to-html -i output.json -o /tmp/$BRANCH/$tag.html -s
           done
       
       - name: Push scan results to github pages
