@@ -52,6 +52,7 @@ jobs:
 
       - name: Run snyk scan on changed images
         shell: bash --noprofile --norc {0}
+        id: snyk-scans
         run: |
           npx snyk auth $SNYK_TOKEN
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
@@ -85,7 +86,7 @@ jobs:
             A snyk scan was performed on the changed images.
             These include - (${{ steps.changed-directories.outputs.all_changed_files }})
             Reports for the above can be found at:
-            ${{steps.changed-directories.outputs.changed_images}}
+            ${{steps.snyk-scans.outputs.changed_images}}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
