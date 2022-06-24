@@ -51,10 +51,10 @@ jobs:
             npx snyk container test $tag --json >> output.json
             mkdir -p /tmp/$BRANCH
             touch /tmp/$BRANCH/$tag.html
-            npx snyk-to-html -i output.json -o /tmp/$BRANCH/$tag.html -s
+            npx snyk-to-html -i output.json -o /tmp/$BRANCH/$tag.html -s -d
             scan_reports=$GH_PAGES_BASE_URL/$BRANCH/$tag.html\n$changed_images
           done
-          echo "::set-output name=changed_images::$changed_images"
+          echo "::set-output name=scan_reports::$scan_reports"
 
       - name: Push scan results to github pages
         if: steps.changed-directories.outputs.any_changed == 'true'
