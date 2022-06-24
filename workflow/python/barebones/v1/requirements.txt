@@ -1,4 +1,4 @@
-boto3
-psycopg2
-sqlalchemy
-snowflake-sqlalchemy
+boto3==1.22.7
+psycopg2==2.9.3
+sqlalchemy==1.4.36
+snowflake-sqlalchemy==1.3.2
