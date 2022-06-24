@@ -55,7 +55,7 @@ jobs:
           npx snyk auth $SNYK_TOKEN
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             tag=$(echo $directory | tr / -)
-            npx snyk container test $tag --json >> output.json
+            npx snyk container test $tag --json --file $directory/Dockerfile >> output.json
             mkdir -p /tmp/$BRANCH
             touch /tmp/$BRANCH/$tag.html
             npx snyk-to-html -i output.json -o /tmp/$BRANCH/$tag.html -s
@@ -74,3 +74,13 @@ jobs:
           git add $BRANCH
           git commit -m "Add file for ${BRANCH}"
           git push origin gh-pages 
+      
+      - name: Add comment(s) to PR
+        uses: mshick/add-pr-comment@v1
+        with:
+          message: |
+            **This is an autogenated comment**
+            A snyk scan was performed on the changed images (${{ steps.changed-directories.outputs.all_changed_files }})
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default
