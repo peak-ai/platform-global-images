@@ -11,7 +11,7 @@ jobs:
       PEAK_USER_ID: 8877
       BRANCH: ${{ github.head_ref }}
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      GH_PAGES_BASE_URL: ${{ github }}
+      GH_PAGES_BASE_URL: https://peak-ai.github.io/platform-global-images
 
     steps:
       - name: Checkout
