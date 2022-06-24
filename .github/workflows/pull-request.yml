@@ -7,7 +7,6 @@ jobs:
   deploy:
     name: Trigger image scanning
     runs-on: ubuntu-latest
-    continue-on-error: true
     env:
       PEAK_USER_ID: 8877
       BRANCH: ${{ github.head_ref }}
@@ -51,11 +50,12 @@ jobs:
       #     tags: user/app:latest
 
       - name: Run snyk scan on changed images
+        shell: bash --noprofile --norc {0}
         run: |
           npx snyk auth $SNYK_TOKEN
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             tag=$(echo $directory | tr / -)
-            npx snyk container test $tag --json >> output.json
+            npx snyk container test $tag --json >> output.json 
             cat output.json | snyk-to-html -o /tmp/$BRANCH/$tag.html
           done
       
