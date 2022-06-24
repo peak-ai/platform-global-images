@@ -49,10 +49,10 @@ jobs:
           mkdir -p /tmp/$BRANCH
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             tag=$(echo $directory | tr / -)
-            npx snyk container test $tag --json >> output.json
+            npx snyk container test $tag --json >> $tag.json
             touch /tmp/$BRANCH/$tag.html
-            npx snyk-to-html -i output.json -o /tmp/$BRANCH/$tag.html -s -d
-            # scan_reports=$(echo $GH_PAGES_BASE_URL/$BRANCH/$tag.html \n $scan_reports)
+            npx snyk-to-html -i $tag.json -o /tmp/$BRANCH/$tag.html -s -d
+            scan_reports=$(echo $GH_PAGES_BASE_URL/$BRANCH/$tag.html \n $scan_reports)
           done
           echo "::set-output name=scan_reports::$scan_reports"
 
