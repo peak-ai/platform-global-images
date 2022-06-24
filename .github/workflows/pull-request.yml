@@ -51,6 +51,7 @@ jobs:
 
       - name: Run snyk scan on changed images
         run: |
+          set -e
           npx snyk auth $SNYK_TOKEN
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             tag=$(echo $directory | tr / -)
