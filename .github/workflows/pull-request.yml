@@ -11,7 +11,7 @@ jobs:
       PEAK_USER_ID: 8877
       BRANCH: ${{ github.head_ref }}
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      GH_PAGES_BASE_URL: https://peak-ai.github.io/platform-global-images
+      GH_PAGES_BASE_URL: ${{ github.head_ref }}
 
     steps:
       - name: Checkout
@@ -31,7 +31,7 @@ jobs:
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             echo "$directory was changed"
           done
-    
+
       - name: Run docker build on changed images
         run: |
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
@@ -39,18 +39,9 @@ jobs:
             echo "Building $directory"
             docker build $directory --build-arg PEAK_USER_ID=$PEAK_USER_ID -t $tag
           done
-      
-      # - name: Set up Docker Buildx
-      #   uses: docker/setup-buildx-action@v1
-
-      # - name: Build
-      #   uses: docker/build-push-action@v3
-      #   with:
-      #     context: .
-      #     push: true
-      #     tags: user/app:latest
 
       - name: Run snyk scan on changed images
+        if: steps.changed-directories.outputs.any_changed == 'true'
         shell: bash --noprofile --norc {0}
         id: snyk-scans
         run: |
@@ -64,7 +55,9 @@ jobs:
             scan_reports=$GH_PAGES_BASE_URL/$BRANCH/$tag.html\n$changed_images
           done
           echo "::set-output name=changed_images::$changed_images"
+
       - name: Push scan results to github pages
+        if: steps.changed-directories.outputs.any_changed == 'true'
         run: |
           mkdir /tmp/gh-pages && cd /tmp/gh-pages
           git init && git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
@@ -76,9 +69,10 @@ jobs:
           cp -R /tmp/$BRANCH $BRANCH
           git add $BRANCH
           git commit -m "Add file for ${BRANCH}"
-          git push origin gh-pages 
-      
+          git push origin gh-pages
+
       - name: Add comment to PR
+        if: steps.changed-directories.outputs.any_changed == 'true'
         uses: mshick/add-pr-comment@v1
         with:
           message: |
@@ -88,5 +82,5 @@ jobs:
             Reports for the above can be found at:
             ${{steps.snyk-scans.outputs.scan_reports}}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
