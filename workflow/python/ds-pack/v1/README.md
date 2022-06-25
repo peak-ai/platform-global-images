@@ -3,13 +3,13 @@ This is the Data Science pack Python image made for workflows. On top of the bar
 
 ## Image Details
 ### Base Image
-This image uses [python:3.10.4-slim-bullseye](https://hub.docker.com/layers/python/library/python/3.10.4-slim-bullseye/images/sha256-b4473ae501f273874a4379f489ea0270dd4dd479d26c72d6d520fb4e717493c6?context=explore) as its base which is maintained by [the Docker Community](https://github.com/docker-library/python).
+This image uses [python:3.8.13-slim-buster](https://hub.docker.com/layers/python/library/python/3.8.13-slim-buster/images/sha256-6258dcdb5fea7b710bfcfc3c889e022e4c6e9dd0ea962cfa73fbc130eff2c174?context=explore) as its base which is maintained by [the Docker Community](https://github.com/docker-library/python).
 
 ### OS and other basic details
 ```
 Debian         GNU/Linux 11 (bullseye)
 Linux Kernel   5.10.104-linuxkit
-Python         3.10.4
+Python         3.8.13
 ```
 
 ### Linux Packages Installed
@@ -18,6 +18,7 @@ aws-cli        2.2.5
 curl           7.74.0
 git            2.30.2
 jq             1.6
+unzip          6.00
 ```
 
 ### Python Libraries Installed

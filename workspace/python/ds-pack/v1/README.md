@@ -3,7 +3,7 @@ This is the Data Science pack Python image made for workspaces. The image runs a
 
 ## Image Details
 ### Base Image
-This image uses [python:3.8.13-buster](https://hub.docker.com/layers/python/library/python/3.8.13-buster/images/sha256-69b40f95ee1f46ca73190ef8f18ba178b6c3500bf0a784b008907433b4f41d2a?context=explore) as its base which is maintained by [the Docker Community](https://github.com/docker-library/python).
+This image uses [python:3.8.13-slim-buster](https://hub.docker.com/layers/python/library/python/3.8.13-slim-buster/images/sha256-6258dcdb5fea7b710bfcfc3c889e022e4c6e9dd0ea962cfa73fbc130eff2c174?context=explore) as its base which is maintained by [the Docker Community](https://github.com/docker-library/python).
 
 ### OS and other basic details
 ```
