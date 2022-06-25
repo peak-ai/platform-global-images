@@ -7,7 +7,7 @@ This image uses [python:3.8.13-slim-buster](https://hub.docker.com/layers/python
 
 ### OS and other basic details
 ```
-Debian         GNU/Linux 11 (bullseye)
+Debian         GNU/Linux 10 (buster)
 Linux Kernel   5.10.104-linuxkit
 Python         3.8.13
 ```
