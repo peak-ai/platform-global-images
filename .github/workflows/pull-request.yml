@@ -23,6 +23,7 @@ jobs:
         with:
           files_ignore: |
             *.md
+            knowledge-base
             .github/workflows
             .gitignore
             license
