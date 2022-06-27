@@ -14,13 +14,13 @@ This repository contains the source code for all the global images available on 
 ## Available Images
 ### [Workflows](./workflow)
   - [Python](./workflow/python)
-    - [barebones](./workflow/python/barebones)
-      - [workflow-python-barebones-v1](./workflow/python/barebones/v1)
+    - [standard](./workflow/python/standard)
+      - [workflow-python-standard-v1](./workflow/python/standard/v1)
     - [ds-pack](./workflow/python/ds-pack)
       - [workflow-python-ds-pack-v1](./workflow/python/ds-pack/v1)
   - [R](./workflow/r)
-    - [barebones](./workflow/r/barebones)
-      - [workflow-r-barebones-v1](./workflow/r/barebones/v1)
+    - [standard](./workflow/r/standard)
+      - [workflow-r-standard-v1](./workflow/r/standard/v1)
     - [ds-pack](./workflow/r/ds-pack)
       - [workflow-r-ds-pack-v1](./workflow/r/ds-pack/v1)
 
