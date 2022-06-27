@@ -37,6 +37,7 @@ jobs:
           done
 
       - name: Run docker build on changed images
+        if: steps.changed-directories.outputs.any_changed == 'true'
         run: |
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             tag=$(echo $directory | tr / -)
