@@ -1,7 +1,7 @@
-FROM python:3.8.13
+FROM python:3.8.13-slim-buster
 
 RUN apt-get update \
-  && apt install jq -y
+  && apt install curl dnsutils unzip git jq libpq-dev python-dev build-essential -y
 
 # Install AWS CLI
 RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.2.5.zip" -o "awscliv2.zip" \
