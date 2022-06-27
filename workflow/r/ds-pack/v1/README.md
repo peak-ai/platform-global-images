@@ -1,5 +1,5 @@
 # workflow-r-ds-pack-v1
-This is the Data Science pack R image made for workflows. On top of the barebones R image this contains a set of most-commonly used dependencies.
+This is the Data Science pack R image made for workflows. On top of the standard R image this contains a set of most-commonly used dependencies.
 
 ## Image Details
 ### Base Image

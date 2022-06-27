@@ -1,5 +1,5 @@
 # workflow-python-ds-pack-v1
-This is the Data Science pack Python image made for workflows. On top of the barebones Python image this contains a set of most-commonly used dependencies.
+This is the Data Science pack Python image made for workflows. On top of the standard Python image this contains a set of most-commonly used dependencies.
 
 ## Image Details
 ### Base Image
