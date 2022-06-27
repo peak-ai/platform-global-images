@@ -24,6 +24,8 @@ jobs:
           files_ignore: |
             *.md
             .github/workflows
+            .gitignore
+            license
           dir_names: true
 
       - name: List all changed directories/images
