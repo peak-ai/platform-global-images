@@ -51,13 +51,18 @@ jobs:
         run: |
           npx snyk auth $SNYK_TOKEN
           mkdir -p /tmp/$BRANCH
+          scan_summary="<table><tr><th>Image name</th><th>Summary</th><th>Unique count</th><th>Report</th></tr>"
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             tag=$(echo $directory | tr / -)
             npx snyk container test $tag --json >> $tag.json
+            tag_json=`cat $tag.json`
             npx snyk-to-html -i $tag.json -o /tmp/$BRANCH/$tag.html -s -d
-            scan_reports=$(echo $GH_PAGES_BASE_URL/$BRANCH/$tag.html $scan_reports)
+            summary=`echo $(jq -r '.summary' <<< "$tag_json")`
+            unique_count=`echo $(jq -r '.uniqueCount' <<< "$tag_json")`
+            report_url=$(echo "<a href='$GH_PAGES_BASE_URL/$BRANCH/$tag.html' target='_blank'>Click here</a>")
+            scan_summary=$(echo $scan_summary "<tr><td>$tag</td><td>$summary</td><td align='right'>$unique_count</td><td>$report_url</td></tr></table>")
           done
-          echo "::set-output name=scan_reports::$scan_reports"
+          echo "::set-output name=scan_summary::$scan_summary"
 
       - name: Push scan results to github pages
         if: steps.changed-directories.outputs.any_changed == 'true'
@@ -79,9 +84,9 @@ jobs:
         uses: mshick/add-pr-comment@v1
         with:
           message: |
-            **This is an autogenated comment**
-            A snyk scan was performed on the changed images. Reports for the same can be found at:
-            ${{steps.snyk-scans.outputs.scan_reports}}
+            **This is an autogenated comment.**
+            **A snyk scan was performed on the changed images.Summary of scans can be found below:**
+            ${{steps.snyk-scans.outputs.scan_summary}}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]"
           allow-repeats: false
