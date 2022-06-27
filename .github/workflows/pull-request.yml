@@ -23,7 +23,7 @@ jobs:
         uses: tj-actions/changed-files@v23
         with:
           files_ignore: |
-            *.md
+            **/*.md
             knowledge-base
             .github/workflows
             .gitignore
