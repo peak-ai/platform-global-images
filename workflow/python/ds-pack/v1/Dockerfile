@@ -1,7 +1,7 @@
-FROM python:3.8.13-slim-buster
+FROM python:3.8.13
 
 RUN apt-get update \
-  && apt install curl dnsutils unzip git jq libpq-dev python-dev build-essential -y
+  && apt install jq -y
 
 # Install AWS CLI
 RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.2.5.zip" -o "awscliv2.zip" \
@@ -13,9 +13,9 @@ RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.2.5.zip" 
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 
-# -----------------------------------------
+# ----------------------------------------
 # Non-Root User Creation!
-# -----------------------------------------
+# ----------------------------------------
 ARG PEAK_USER_ID
 ENV PEAK_USER_ID=$PEAK_USER_ID
 
