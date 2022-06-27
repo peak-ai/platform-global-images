@@ -54,7 +54,6 @@ jobs:
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             tag=$(echo $directory | tr / -)
             npx snyk container test $tag --json >> $tag.json
-            cat $tag.json
             npx snyk-to-html -i $tag.json -o /tmp/$BRANCH/$tag.html -s -d
             scan_reports=$(echo $GH_PAGES_BASE_URL/$BRANCH/$tag.html $scan_reports)
           done
