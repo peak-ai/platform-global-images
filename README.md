@@ -48,6 +48,7 @@ The following Python images are available:
 #### [R](./workflow/r)
 The following R image is available:
 - [standard-pack](./workflow/r/standard-pack)
+- [ds-pack](./workflow/r/ds-pack)
 
 ### [Workspace](./workspace)
 These images enable Peak users to run Workspaces.<p>
