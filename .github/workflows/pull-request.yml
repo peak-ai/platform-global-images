@@ -57,7 +57,7 @@ jobs:
             tag=$(echo $directory | tr / -)
             npx snyk container test $tag --json >> $tag.json
             tag_json=`cat $tag.json`
-            npx snyk-to-html -i $tag.json -o /tmp/$BRANCH/$tag.html -s -d
+            npx snyk-to-html -i $tag.json -o /tmp/$BRANCH/$tag.html -d
             all_vulnerabilities=`jq -r '.vulnerabilities[].severity' $tag.json`
             critical=`echo $all_vulnerabilities | grep -wo "critical" | wc -l | xargs`
             high=`echo $all_vulnerabilities | grep -wo "high" | wc -l | xargs`
