@@ -1,4 +1,4 @@
-# workflow-python-standard-v1
+# workflow-python-standard-pack-v1
 This is the smallest Python image that allows users to run workflows. This contains the minimal set of packages installed that allows users to make the most of workflows.
 
 ## Image Details
@@ -38,7 +38,7 @@ You can find more details about build arguments in the [Docker documentation](ht
 ## Building the Image
 To build the image locally just run the docker build command passing in the required build arguments.
 ```
-docker build . -t workflow-python-standard-v1 --build-arg PEAK_USER_ID=8877
+docker build . -t workflow-python-standard-pack-v1 --build-arg PEAK_USER_ID=8877
 ```
 
 ## Using the Image
