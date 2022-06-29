@@ -55,16 +55,18 @@ jobs:
           scan_summary="<table><tr><th>Image name</th><th>Critical</th><th>High</th><th>Medium</th><th>Low</th><th>Report</th></tr>"
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             tag=$(echo $directory | tr / -)
-            tag_json=$(npx snyk container test $tag --json)
-            npx snyk-to-html -i $tag.json -o /tmp/$BRANCH/$tag.html -s -d
-            all_vulnerabilities=`jq -r '.vulnerabilities[].severity' op.json`
-            critical=`echo $all_vulnerabilities | grep -w "critical" | wc -l | xargs`
-            high=`echo $all_vulnerabilities | grep -w "high" | wc -l | xargs`
-            medium=`echo $all_vulnerabilities | grep -w "medium" | wc -l | xargs`
-            low=`echo $all_vulnerabilities | grep -w "low" | wc -l | xargs`
+            npx snyk container test $tag --json > $tag.json
+            tag_json=`cat $tag.json`
+            npx snyk-to-html -i $tag.json -o /tmp/$BRANCH/$tag.html -d
+            all_vulnerabilities=`jq -r '.vulnerabilities[].severity' $tag.json`
+            critical=`echo $all_vulnerabilities | grep -wo "critical" | wc -l | xargs`
+            high=`echo $all_vulnerabilities | grep -wo "high" | wc -l | xargs`
+            medium=`echo $all_vulnerabilities | grep -wo "medium" | wc -l | xargs`
+            low=`echo $all_vulnerabilities | grep -wo "low" | wc -l | xargs`
             report_url=$(echo "<a href='$GH_PAGES_BASE_URL/$BRANCH/$tag.html' target='_blank'>Click here</a>")
-            scan_summary="$scan_summary <tr><td>$tag</td><td>$summary</td><td>$critical</td><td>$high</td><td>$medium</td><td>$low</td><td>$report_url</td></tr></table>"
+            scan_summary="$scan_summary <tr><td>$tag</td><td>$critical</td><td>$high</td><td>$medium</td><td>$low</td><td>$report_url</td></tr>"
           done
+          scan_summar="$scan_summary </table>"
           echo "::set-output name=scan_summary::$scan_summary"
 
       - name: Push scan results to github pages
