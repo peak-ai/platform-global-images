@@ -1,6 +1,6 @@
 FROM python:3.8.13-slim-buster
 
-# Set shell to be bash and fail any pipe if any step in the pipe fails
+# Set shell to be bash and fail any pipe if any step in the pipe fails!!!
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # install system packages
