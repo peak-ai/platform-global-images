@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Snyk test report</title>
-  <meta name="description" content="386 known vulnerabilities found in 1671 vulnerable dependency paths.">
+  <meta name="description" content="387 known vulnerabilities found in 1675 vulnerable dependency paths.">
   <base target="_blank">
   <link rel="icon" type="image/png" href="https://res.cloudinary.com/snyk/image/upload/v1468845142/favicon/favicon.png"
     sizes="194x194">
@@ -456,7 +456,7 @@
               <div class="header-wrap">
                   <h1 class="project__header__title">Snyk test report</h1>
     
-                <p class="timestamp">June 29th 2022, 1:36:20 pm</p>
+                <p class="timestamp">June 30th 2022, 7:50:38 am</p>
               </div>
               <div class="source-panel">
                 <span>Scanned the following path:</span>
@@ -466,8 +466,8 @@
               </div>
     
               <div class="meta-counts">
-                <div class="meta-count"><span>386</span> <span>known vulnerabilities</span></div>
-                <div class="meta-count"><span>1671 vulnerable dependency paths</span></div>
+                <div class="meta-count"><span>387</span> <span>known vulnerabilities</span></div>
+                <div class="meta-count"><span>1675 vulnerable dependency paths</span></div>
                 <div class="meta-count"><span>378</span> <span>dependencies</span></div>
               </div><!-- .meta-counts -->
             </div><!-- .layout-container--short -->
@@ -485,6 +485,90 @@
       </section>
     <div class="layout-container" style="padding-top: 35px;">
       <div class="cards--vuln filter--patch filter--ignore">
+        <div class="card card--vuln  disclosure--not-new severity--critical" data-snyk-test="critical">
+            <h2 class="card__title">OS Command Injection</h2>
+            <div class="card__section">
+        
+                <div class="label label--critical">
+                    <span class="label__text">critical severity</span>
+                </div>
+        
+                <hr/>
+        
+                <ul class="card__meta">
+                    <li class="card__meta__item">
+                        Package Manager: debian:10
+                    </li>
+                    <li class="card__meta__item">
+                            Vulnerable module:
+        
+                            openssl
+                    </li>
+        
+                    <li class="card__meta__item">Introduced through:
+        
+        
+                                    docker-image|workspace-python-ds-pack-v1@latest, meta-common-packages@meta and others
+                    </li>
+                </ul>
+        
+                <hr/>
+        
+        
+                        <h3 class="card__section__title">Detailed paths</h3>
+        
+                    <ul class="card__meta__paths">
+                                <li>
+                                <span class="list-paths__item__introduced"><em>Introduced through</em>:
+                                        docker-image|workspace-python-ds-pack-v1@latest
+                                         <span class="list-paths__item__arrow">›</span> 
+                                        meta-common-packages@meta
+                                         <span class="list-paths__item__arrow">›</span> 
+                                        openssl@1.1.1n-0+deb10u2
+                                        
+                                </span>
+        
+                            </li>
+                                <li>
+                                <span class="list-paths__item__introduced"><em>Introduced through</em>:
+                                        docker-image|workspace-python-ds-pack-v1@latest
+                                         <span class="list-paths__item__arrow">›</span> 
+                                        meta-common-packages@meta
+                                         <span class="list-paths__item__arrow">›</span> 
+                                        openssl/libssl1.1@1.1.1n-0+deb10u2
+                                        
+                                </span>
+        
+                            </li>
+                    </ul><!-- .list-paths -->
+        
+            </div><!-- .card__section -->
+        
+              <hr/>
+              <!-- Overview -->
+              <h2 id="nvd-description">NVD Description</h2>
+        <p><strong><em>Note:</em></strong> <em>Versions mentioned in the description apply to the upstream <code>openssl</code> package.</em>
+        <em>See <code>How to fix?</code> for <code>Debian:10</code> relevant versions.</em></p>
+        <p>In addition to the c_rehash shell command injection identified in CVE-2022-1292, further circumstances where the c_rehash script does not properly sanitise shell metacharacters to prevent command injection were found by code review. When the CVE-2022-1292 was fixed it was not discovered that there are other places in the script where the file names of certificates being hashed were possibly passed to a command executed through the shell. This script is distributed by some operating systems in a manner where it is automatically executed. On such operating systems, an attacker could execute arbitrary commands with the privileges of the script. Use of the c_rehash script is considered obsolete and should be replaced by the OpenSSL rehash command line tool. Fixed in OpenSSL 3.0.4 (Affected 3.0.0,3.0.1,3.0.2,3.0.3). Fixed in OpenSSL 1.1.1p (Affected 1.1.1-1.1.1o). Fixed in OpenSSL 1.0.2zf (Affected 1.0.2-1.0.2ze).</p>
+        <h2 id="remediation">Remediation</h2>
+        <p>Upgrade <code>Debian:10</code> <code>openssl</code> to version 1.1.1n-0+deb10u3 or higher.</p>
+        <h2 id="references">References</h2>
+        <ul>
+        <li><a href="https://security-tracker.debian.org/tracker/CVE-2022-2068">ADVISORY</a></li>
+        <li><a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9639817dac8bbbaa64d09efad7464ccc405527c7">CONFIRM</a></li>
+        <li><a href="https://www.openssl.org/news/secadv/20220621.txt">CONFIRM</a></li>
+        <li><a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=7a9c027159fe9e1bbc2cd38a8a2914bff0d5abd9">CONFIRM</a></li>
+        <li><a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2c9c35870601b4a44d86ddbf512b38df38285cfa">CONFIRM</a></li>
+        <li><a href="https://www.debian.org/security/2022/dsa-5169">DEBIAN</a></li>
+        </ul>
+        
+              <hr/>
+        
+            <div class="cta card__cta">
+                <p><a href="https://snyk.io/vuln/SNYK-DEBIAN10-OPENSSL-2933515">More about this vulnerability</a></p>
+            </div>
+        
+        </div><!-- .card -->
         <div class="card card--vuln  disclosure--not-new severity--critical" data-snyk-test="critical">
             <h2 class="card__title">Use After Free</h2>
             <div class="card__section">
@@ -2752,75 +2836,6 @@
         
             <div class="cta card__cta">
                 <p><a href="https://snyk.io/vuln/SNYK-DEBIAN10-NODEJS-2332568">More about this vulnerability</a></p>
-            </div>
-        
-        </div><!-- .card -->
-        <div class="card card--vuln  disclosure--not-new severity--medium" data-snyk-test="medium">
-            <h2 class="card__title">Out-of-bounds Write</h2>
-            <div class="card__section">
-        
-                <div class="label label--medium">
-                    <span class="label__text">medium severity</span>
-                </div>
-        
-                <hr/>
-        
-                <ul class="card__meta">
-                    <li class="card__meta__item">
-                        Package Manager: debian:10
-                    </li>
-                    <li class="card__meta__item">
-                            Vulnerable module:
-        
-                            libjpeg-turbo/libjpeg62-turbo
-                    </li>
-        
-                    <li class="card__meta__item">Introduced through:
-        
-        
-                                    docker-image|workspace-python-ds-pack-v1@latest, meta-common-packages@meta and others
-                    </li>
-                </ul>
-        
-                <hr/>
-        
-        
-                        <h3 class="card__section__title">Detailed paths</h3>
-        
-                    <ul class="card__meta__paths">
-                                <li>
-                                <span class="list-paths__item__introduced"><em>Introduced through</em>:
-                                        docker-image|workspace-python-ds-pack-v1@latest
-                                         <span class="list-paths__item__arrow">›</span> 
-                                        meta-common-packages@meta
-                                         <span class="list-paths__item__arrow">›</span> 
-                                        libjpeg-turbo/libjpeg62-turbo@1:1.5.2-2+deb10u1
-                                        
-                                </span>
-        
-                            </li>
-                    </ul><!-- .list-paths -->
-        
-            </div><!-- .card__section -->
-        
-              <hr/>
-              <!-- Overview -->
-              <h2 id="nvd-description">NVD Description</h2>
-        <p><strong><em>Note:</em></strong> <em>Versions mentioned in the description apply to the upstream <code>libjpeg-turbo</code> package.</em></p>
-        <p>The PPM reader in libjpeg-turbo through 2.0.90 mishandles use of tjLoadImage for loading a 16-bit binary PPM file into a grayscale buffer and loading a 16-bit binary PGM file into an RGB buffer. This is related to a heap-based buffer overflow in the get_word_rgb_row function in rdppm.c.</p>
-        <h2 id="remediation">Remediation</h2>
-        <p>There is no fixed version for <code>Debian:10</code> <code>libjpeg-turbo</code>.</p>
-        <h2 id="references">References</h2>
-        <ul>
-        <li><a href="https://security-tracker.debian.org/tracker/CVE-2021-46822">ADVISORY</a></li>
-        <li><a href="https://exchange.xforce.ibmcloud.com/vulnerabilities/221567">MISC</a></li>
-        <li><a href="https://github.com/libjpeg-turbo/libjpeg-turbo/commit/f35fd27ec641c42d6b115bfa595e483ec58188d2">MISC</a></li>
-        </ul>
-        
-              <hr/>
-        
-            <div class="cta card__cta">
-                <p><a href="https://snyk.io/vuln/SNYK-DEBIAN10-LIBJPEGTURBO-2932110">More about this vulnerability</a></p>
             </div>
         
         </div><!-- .card -->
@@ -10383,7 +10398,7 @@
         
         </div><!-- .card -->
         <div class="card card--vuln  disclosure--not-new severity--low" data-snyk-test="low">
-            <h2 class="card__title">CVE-2022-2183</h2>
+            <h2 class="card__title">Out-of-bounds Read</h2>
             <div class="card__section">
         
                 <div class="label label--low">
@@ -10889,6 +10904,108 @@
         
             <div class="cta card__cta">
                 <p><a href="https://snyk.io/vuln/SNYK-DEBIAN10-VIM-2936502">More about this vulnerability</a></p>
+            </div>
+        
+        </div><!-- .card -->
+        <div class="card card--vuln  disclosure--not-new severity--low" data-snyk-test="low">
+            <h2 class="card__title">NULL Pointer Dereference</h2>
+            <div class="card__section">
+        
+                <div class="label label--low">
+                    <span class="label__text">low severity</span>
+                </div>
+        
+                <hr/>
+        
+                <ul class="card__meta">
+                    <li class="card__meta__item">
+                        Package Manager: debian:10
+                    </li>
+                    <li class="card__meta__item">
+                            Vulnerable module:
+        
+                            vim/xxd
+                    </li>
+        
+                    <li class="card__meta__item">Introduced through:
+        
+        
+                                    docker-image|workspace-python-ds-pack-v1@latest, vim@2:8.1.0875-5+deb10u2 and others
+                    </li>
+                </ul>
+        
+                <hr/>
+        
+        
+                        <h3 class="card__section__title">Detailed paths</h3>
+        
+                    <ul class="card__meta__paths">
+                                <li>
+                                <span class="list-paths__item__introduced"><em>Introduced through</em>:
+                                        docker-image|workspace-python-ds-pack-v1@latest
+                                         <span class="list-paths__item__arrow">›</span> 
+                                        vim@2:8.1.0875-5+deb10u2
+                                         <span class="list-paths__item__arrow">›</span> 
+                                        vim/vim-common@2:8.1.0875-5+deb10u2
+                                         <span class="list-paths__item__arrow">›</span> 
+                                        vim/xxd@2:8.1.0875-5+deb10u2
+                                        
+                                </span>
+        
+                            </li>
+                                <li>
+                                <span class="list-paths__item__introduced"><em>Introduced through</em>:
+                                        docker-image|workspace-python-ds-pack-v1@latest
+                                         <span class="list-paths__item__arrow">›</span> 
+                                        vim@2:8.1.0875-5+deb10u2
+                                         <span class="list-paths__item__arrow">›</span> 
+                                        vim/vim-common@2:8.1.0875-5+deb10u2
+                                        
+                                </span>
+        
+                            </li>
+                                <li>
+                                <span class="list-paths__item__introduced"><em>Introduced through</em>:
+                                        docker-image|workspace-python-ds-pack-v1@latest
+                                         <span class="list-paths__item__arrow">›</span> 
+                                        vim@2:8.1.0875-5+deb10u2
+                                         <span class="list-paths__item__arrow">›</span> 
+                                        vim/vim-runtime@2:8.1.0875-5+deb10u2
+                                        
+                                </span>
+        
+                            </li>
+                                <li>
+                                <span class="list-paths__item__introduced"><em>Introduced through</em>:
+                                        docker-image|workspace-python-ds-pack-v1@latest
+                                         <span class="list-paths__item__arrow">›</span> 
+                                        vim@2:8.1.0875-5+deb10u2
+                                        
+                                </span>
+        
+                            </li>
+                    </ul><!-- .list-paths -->
+        
+            </div><!-- .card__section -->
+        
+              <hr/>
+              <!-- Overview -->
+              <h2 id="nvd-description">NVD Description</h2>
+        <p><strong><em>Note:</em></strong> <em>Versions mentioned in the description apply to the upstream <code>vim</code> package.</em></p>
+        <p>NULL Pointer Dereference in GitHub repository vim/vim prior to 8.2.</p>
+        <h2 id="remediation">Remediation</h2>
+        <p>There is no fixed version for <code>Debian:10</code> <code>vim</code>.</p>
+        <h2 id="references">References</h2>
+        <ul>
+        <li><a href="https://security-tracker.debian.org/tracker/CVE-2022-2231">ADVISORY</a></li>
+        <li><a href="https://huntr.dev/bounties/8dae6ab4-7a7a-4716-a65c-9b090fa057b5">CONFIRM</a></li>
+        <li><a href="https://github.com/vim/vim/commit/79481367a457951aabd9501b510fd7e3eb29c3d8">MISC</a></li>
+        </ul>
+        
+              <hr/>
+        
+            <div class="cta card__cta">
+                <p><a href="https://snyk.io/vuln/SNYK-DEBIAN10-VIM-2937065">More about this vulnerability</a></p>
             </div>
         
         </div><!-- .card -->
@@ -22705,90 +22822,6 @@
         
         </div><!-- .card -->
         <div class="card card--vuln  disclosure--not-new severity--low" data-snyk-test="low">
-            <h2 class="card__title">CVE-2022-2068</h2>
-            <div class="card__section">
-        
-                <div class="label label--low">
-                    <span class="label__text">low severity</span>
-                </div>
-        
-                <hr/>
-        
-                <ul class="card__meta">
-                    <li class="card__meta__item">
-                        Package Manager: debian:10
-                    </li>
-                    <li class="card__meta__item">
-                            Vulnerable module:
-        
-                            openssl
-                    </li>
-        
-                    <li class="card__meta__item">Introduced through:
-        
-        
-                                    docker-image|workspace-python-ds-pack-v1@latest, meta-common-packages@meta and others
-                    </li>
-                </ul>
-        
-                <hr/>
-        
-        
-                        <h3 class="card__section__title">Detailed paths</h3>
-        
-                    <ul class="card__meta__paths">
-                                <li>
-                                <span class="list-paths__item__introduced"><em>Introduced through</em>:
-                                        docker-image|workspace-python-ds-pack-v1@latest
-                                         <span class="list-paths__item__arrow">›</span> 
-                                        meta-common-packages@meta
-                                         <span class="list-paths__item__arrow">›</span> 
-                                        openssl@1.1.1n-0+deb10u2
-                                        
-                                </span>
-        
-                            </li>
-                                <li>
-                                <span class="list-paths__item__introduced"><em>Introduced through</em>:
-                                        docker-image|workspace-python-ds-pack-v1@latest
-                                         <span class="list-paths__item__arrow">›</span> 
-                                        meta-common-packages@meta
-                                         <span class="list-paths__item__arrow">›</span> 
-                                        openssl/libssl1.1@1.1.1n-0+deb10u2
-                                        
-                                </span>
-        
-                            </li>
-                    </ul><!-- .list-paths -->
-        
-            </div><!-- .card__section -->
-        
-              <hr/>
-              <!-- Overview -->
-              <h2 id="nvd-description">NVD Description</h2>
-        <p><strong><em>Note:</em></strong> <em>Versions mentioned in the description apply to the upstream <code>openssl</code> package.</em>
-        <em>See <code>How to fix?</code> for <code>Debian:10</code> relevant versions.</em></p>
-        <p>In addition to the c_rehash shell command injection identified in CVE-2022-1292, further circumstances where the c_rehash script does not properly sanitise shell metacharacters to prevent command injection were found by code review. When the CVE-2022-1292 was fixed it was not discovered that there are other places in the script where the file names of certificates being hashed were possibly passed to a command executed through the shell. This script is distributed by some operating systems in a manner where it is automatically executed. On such operating systems, an attacker could execute arbitrary commands with the privileges of the script. Use of the c_rehash script is considered obsolete and should be replaced by the OpenSSL rehash command line tool. Fixed in OpenSSL 3.0.4 (Affected 3.0.0,3.0.1,3.0.2,3.0.3). Fixed in OpenSSL 1.1.1p (Affected 1.1.1-1.1.1o). Fixed in OpenSSL 1.0.2zf (Affected 1.0.2-1.0.2ze).</p>
-        <h2 id="remediation">Remediation</h2>
-        <p>Upgrade <code>Debian:10</code> <code>openssl</code> to version 1.1.1n-0+deb10u3 or higher.</p>
-        <h2 id="references">References</h2>
-        <ul>
-        <li><a href="https://security-tracker.debian.org/tracker/CVE-2022-2068">ADVISORY</a></li>
-        <li><a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9639817dac8bbbaa64d09efad7464ccc405527c7">CONFIRM</a></li>
-        <li><a href="https://www.openssl.org/news/secadv/20220621.txt">CONFIRM</a></li>
-        <li><a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=7a9c027159fe9e1bbc2cd38a8a2914bff0d5abd9">CONFIRM</a></li>
-        <li><a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2c9c35870601b4a44d86ddbf512b38df38285cfa">CONFIRM</a></li>
-        <li><a href="https://www.debian.org/security/2022/dsa-5169">DEBIAN</a></li>
-        </ul>
-        
-              <hr/>
-        
-            <div class="cta card__cta">
-                <p><a href="https://snyk.io/vuln/SNYK-DEBIAN10-OPENSSL-2933515">More about this vulnerability</a></p>
-            </div>
-        
-        </div><!-- .card -->
-        <div class="card card--vuln  disclosure--not-new severity--low" data-snyk-test="low">
             <h2 class="card__title">Cryptographic Issues</h2>
             <div class="card__section">
         
@@ -27146,6 +27179,75 @@
         
             <div class="cta card__cta">
                 <p><a href="https://snyk.io/vuln/SNYK-DEBIAN10-LIBJPEGTURBO-1298595">More about this vulnerability</a></p>
+            </div>
+        
+        </div><!-- .card -->
+        <div class="card card--vuln  disclosure--not-new severity--low" data-snyk-test="low">
+            <h2 class="card__title">Out-of-bounds Write</h2>
+            <div class="card__section">
+        
+                <div class="label label--low">
+                    <span class="label__text">low severity</span>
+                </div>
+        
+                <hr/>
+        
+                <ul class="card__meta">
+                    <li class="card__meta__item">
+                        Package Manager: debian:10
+                    </li>
+                    <li class="card__meta__item">
+                            Vulnerable module:
+        
+                            libjpeg-turbo/libjpeg62-turbo
+                    </li>
+        
+                    <li class="card__meta__item">Introduced through:
+        
+        
+                                    docker-image|workspace-python-ds-pack-v1@latest, meta-common-packages@meta and others
+                    </li>
+                </ul>
+        
+                <hr/>
+        
+        
+                        <h3 class="card__section__title">Detailed paths</h3>
+        
+                    <ul class="card__meta__paths">
+                                <li>
+                                <span class="list-paths__item__introduced"><em>Introduced through</em>:
+                                        docker-image|workspace-python-ds-pack-v1@latest
+                                         <span class="list-paths__item__arrow">›</span> 
+                                        meta-common-packages@meta
+                                         <span class="list-paths__item__arrow">›</span> 
+                                        libjpeg-turbo/libjpeg62-turbo@1:1.5.2-2+deb10u1
+                                        
+                                </span>
+        
+                            </li>
+                    </ul><!-- .list-paths -->
+        
+            </div><!-- .card__section -->
+        
+              <hr/>
+              <!-- Overview -->
+              <h2 id="nvd-description">NVD Description</h2>
+        <p><strong><em>Note:</em></strong> <em>Versions mentioned in the description apply to the upstream <code>libjpeg-turbo</code> package.</em></p>
+        <p>The PPM reader in libjpeg-turbo through 2.0.90 mishandles use of tjLoadImage for loading a 16-bit binary PPM file into a grayscale buffer and loading a 16-bit binary PGM file into an RGB buffer. This is related to a heap-based buffer overflow in the get_word_rgb_row function in rdppm.c.</p>
+        <h2 id="remediation">Remediation</h2>
+        <p>There is no fixed version for <code>Debian:10</code> <code>libjpeg-turbo</code>.</p>
+        <h2 id="references">References</h2>
+        <ul>
+        <li><a href="https://security-tracker.debian.org/tracker/CVE-2021-46822">ADVISORY</a></li>
+        <li><a href="https://exchange.xforce.ibmcloud.com/vulnerabilities/221567">MISC</a></li>
+        <li><a href="https://github.com/libjpeg-turbo/libjpeg-turbo/commit/f35fd27ec641c42d6b115bfa595e483ec58188d2">MISC</a></li>
+        </ul>
+        
+              <hr/>
+        
+            <div class="cta card__cta">
+                <p><a href="https://snyk.io/vuln/SNYK-DEBIAN10-LIBJPEGTURBO-2932110">More about this vulnerability</a></p>
             </div>
         
         </div><!-- .card -->
