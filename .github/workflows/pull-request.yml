@@ -56,6 +56,13 @@ jobs:
           scan_summary="<table><tr><th>Image name</th><th>Critical</th><th>High</th><th>Medium</th><th>Low</th><th>Report</th></tr>"
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             tag=$(echo $directory | tr / -)
+            docker image inspect $tag > /dev/null 2>&1
+
+            if [[ $? -ne 0 ]]; then
+              scan_summary="$scan_summary <tr><td>$tag</td><td>-</td><td>-</td><td>-</td><td>-</td><td>Image Build Failed</td></tr>"
+              continue
+            fi
+
             npx snyk container test $tag --json >> $tag.json
             tag_json=`cat $tag.json`
             npx snyk-to-html -i $tag.json -o /tmp/$BRANCH/$tag.html -d
