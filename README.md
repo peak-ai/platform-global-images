@@ -15,7 +15,14 @@ For more information about using Docker images with Peak, see [Image Management]
 ## Getting started
 ### Directory structure
 The images contained in this repository are organised in the following way:
-> peak-ai/platform-global-images/platform function/language/image-package/version
+```
+├── peak-ai
+│   └── platform-global-images
+│       └── Platform Function
+│           └── Language
+│               └── Image-Package
+│                   └── Version
+```
 
  - **Platform function** 
  The area of the platform where the image can be used, for example Workflows.
