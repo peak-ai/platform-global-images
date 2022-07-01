@@ -9,7 +9,7 @@ jobs:
     name: Trigger image scanning
     runs-on: ubuntu-latest
     env:
-      PEAK_USER_ID: 8877
+      PEAK_USER_ID: ${{ secrets.PEAK_USER_ID }}
       BRANCH: ${{ github.head_ref }}
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       GH_PAGES_BASE_URL: https://peak-ai.github.io/platform-global-images
