@@ -9,7 +9,7 @@ jobs:
     name: Trigger image scanning
     runs-on: ubuntu-latest
     env:
-      PEAK_USER_ID: 8877
+      PEAK_USER_ID: ${{ secrets.PEAK_USER_ID }}
       BRANCH: ${{ github.head_ref }}
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       GH_PAGES_BASE_URL: https://peak-ai.github.io/platform-global-images
@@ -71,7 +71,7 @@ jobs:
             high=`echo $all_vulnerabilities | grep -wo "high" | wc -l | xargs`
             medium=`echo $all_vulnerabilities | grep -wo "medium" | wc -l | xargs`
             low=`echo $all_vulnerabilities | grep -wo "low" | wc -l | xargs`
-            report_url=$(echo "<a href='$GH_PAGES_BASE_URL/$BRANCH/$tag.html' target='_blank'>Click here</a>")
+            report_url="<a href='$GH_PAGES_BASE_URL/$BRANCH/$tag.html' target='_blank'>Click here</a>"
             scan_summary="$scan_summary <tr><td>$tag</td><td>$critical</td><td>$high</td><td>$medium</td><td>$low</td><td>$report_url</td></tr>"
           done
           scan_summar="$scan_summary </table>"
