@@ -50,9 +50,7 @@ The Dockerfile expects the following build argument:
 
 `PEAK_USER_ID`
 
-On the Peak platform, its value must be `8877`. 
-
-When a Workflow step runs with the workflow-r-standard image, this is the default user that the workflow step will run with. It is used within the image to create a new user which is then used when running the image across various services in Peak.
+When a Workflow step runs with the workflow-r-standard image, this is the default user that the workflow step will run with. It is used within the image to create a new user which is then used when running the image across various services in Peak. For more details, see [Non root users and Peak](../../../../knowledge-base/non-root-user.md).
 
 You can find more details about build arguments in the [Docker documentation](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables---build-arg).
 

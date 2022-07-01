@@ -46,7 +46,7 @@ The following Python images are available:
 - [standard-pack](./workflow/python/standard-pack)
 - [ds-pack](./workflow/python/ds-pack)
 #### [R](./workflow/r)
-The following R image is available:
+The following R images are available:
 - [standard-pack](./workflow/r/standard-pack)
 - [ds-pack](./workflow/r/ds-pack)
 

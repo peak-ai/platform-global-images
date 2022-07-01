@@ -16,4 +16,4 @@ We provide Python and R versions of the images:
 
 ## Important
 All Workflows must be set up as a non-root user.
-For more details, see [here](../knowledge-base/non-root-user.md).
+For more details, see [Non root users and Peak](../knowledge-base/non-root-user.md).
