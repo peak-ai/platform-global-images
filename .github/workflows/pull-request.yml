@@ -1,0 +1,104 @@
+name: Trigger image scanning on pull request and changes to pr
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+    branches: [main]
+
+jobs:
+  deploy:
+    name: Trigger image scanning
+    runs-on: ubuntu-latest
+    env:
+      PEAK_USER_ID: ${{ secrets.PEAK_USER_ID }}
+      BRANCH: ${{ github.head_ref }}
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      GH_PAGES_BASE_URL: https://peak-ai.github.io/platform-global-images
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Get changed directories
+        id: changed-directories
+        uses: tj-actions/changed-files@v23
+        with:
+          files_ignore: |
+            *.md
+            knowledge-base
+            .github/workflows
+            .gitignore
+            license
+          dir_names: true
+
+      - name: List all changed directories/images
+        run: |
+          for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
+            echo "$directory was changed"
+          done
+
+      - name: Run docker build on changed images
+        if: steps.changed-directories.outputs.any_changed == 'true'
+        shell: bash --noprofile --norc {0}
+        run: |
+          for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
+            tag=$(echo $directory | tr / -)
+            echo "Building $directory"
+            docker build $directory --build-arg PEAK_USER_ID=$PEAK_USER_ID -t $tag
+          done
+
+      - name: Run snyk scan on changed images
+        if: steps.changed-directories.outputs.any_changed == 'true'
+        shell: bash --noprofile --norc {0}
+        id: snyk-scans
+        run: |
+          npx snyk auth $SNYK_TOKEN
+          mkdir -p /tmp/$BRANCH
+          scan_summary="<table><tr><th>Image name</th><th>Critical</th><th>High</th><th>Medium</th><th>Low</th><th>Report</th></tr>"
+          for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
+            tag=$(echo $directory | tr / -)
+            docker image inspect $tag > /dev/null 2>&1
+
+            if [[ $? -ne 0 ]]; then
+              scan_summary="$scan_summary <tr><td>$tag</td><td>-</td><td>-</td><td>-</td><td>-</td><td>Image Build Failed</td></tr>"
+              continue
+            fi
+
+            npx snyk container test $tag --json >> $tag.json
+            tag_json=`cat $tag.json`
+            npx snyk-to-html -i $tag.json -o /tmp/$BRANCH/$tag.html -d
+            all_vulnerabilities=`jq -r '.vulnerabilities[].severity' $tag.json`
+            critical=`echo $all_vulnerabilities | grep -wo "critical" | wc -l | xargs`
+            high=`echo $all_vulnerabilities | grep -wo "high" | wc -l | xargs`
+            medium=`echo $all_vulnerabilities | grep -wo "medium" | wc -l | xargs`
+            low=`echo $all_vulnerabilities | grep -wo "low" | wc -l | xargs`
+            report_url=$(echo "<a href='$GH_PAGES_BASE_URL/$BRANCH/$tag.html' target='_blank'>Click here</a>")
+            scan_summary="$scan_summary <tr><td>$tag</td><td>$critical</td><td>$high</td><td>$medium</td><td>$low</td><td>$report_url</td></tr>"
+          done
+          scan_summar="$scan_summary </table>"
+          echo "::set-output name=scan_summary::$scan_summary"
+
+      - name: Push scan results to github pages
+        if: steps.changed-directories.outputs.any_changed == 'true'
+        run: |
+          mkdir /tmp/gh-pages && cd /tmp/gh-pages
+          git init && git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git checkout -b gh-pages
+          git pull origin gh-pages
+          git config --local user.email "scanner@peak.ai"
+          git config --local user.name "github-actions[bot]"
+          rm -rf $BRANCH
+          cp -R /tmp/$BRANCH $BRANCH
+          git add $BRANCH
+          git commit -m "Add file for ${BRANCH}"
+          git push origin gh-pages
+
+      - name: Add comment to PR
+        if: steps.changed-directories.outputs.any_changed == 'true'
+        uses: mshick/add-pr-comment@v1
+        with:
+          message: |
+            We performed a Snyk scan on all the changed images. Summary of scans can be found below:
+            ${{steps.snyk-scans.outputs.scan_summary}}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: "github-actions[bot]"
+          allow-repeats: false
