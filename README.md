@@ -18,20 +18,12 @@ The images contained in this repository are organised in the following way:
 ```
 ├── peak-ai
 │   └── platform-global-images
-│       └── Platform Function
-│           └── Language
-│               └── Image-Package
-│                   └── Version
-```
+│       └── Platform Function         The area of the platform where the image can be used, for example Workflows.
+│           └── Language              The programming language used for the image, for example Python or R.
+│               └── Image-Package     This could be an image that is suitable for standard use or advanced, data science use.
+│                   └── Version       The version number of the image. 
 
- - **Platform function** 
- The area of the platform where the image can be used, for example Workflows.
- - **Language** 
- The programming language used for the image, for example Python or R.
- - **Image package type** 
- This could be an image that is suitable for standard use or advanced, data science use.
- - **Version** 
- The version number of the image. 
+```
 
 ### Folder contents
 Each folder contains the following:
