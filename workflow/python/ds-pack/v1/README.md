@@ -29,6 +29,7 @@ psycopg2                      2.9.3
 snowflake                     0.0.3
 snowflake-connector-python    2.7.7
 sklearn                       0.0
+snowflake-sqlalchemy          1.3.2
 SQLAlchemy                    1.4.36
 ```
 
