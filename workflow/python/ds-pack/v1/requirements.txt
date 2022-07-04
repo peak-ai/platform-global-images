@@ -5,3 +5,4 @@ snowflake==0.0.3
 snowflake-connector-python[pandas]==2.7.7
 sklearn==0.0
 SQLAlchemy==1.4.36
+snowflake-sqlalchemy==1.3.2
