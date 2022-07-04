@@ -46,4 +46,3 @@ ENV ODBCSYSINI=/home/peak-user
 WORKDIR /home/peak-user
 
 # Set the user as default for the container
-USER $PEAK_USER_ID
