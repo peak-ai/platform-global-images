@@ -1,7 +1,7 @@
 FROM r-base:4.2.0
 
 RUN apt-get update && \
-  apt-get install -y git unixodbc unixodbc-dev libodbc1 libodbcinst1
+  apt-get install -y git unixodbc unixodbc-dev libodbc1
 
 # Install aws-cli
 RUN wget https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.2.5.zip -O awscliv2.zip \
