@@ -8,7 +8,7 @@ jupyterlab_widgets==1.1.0
 jupytext==1.13.8
 lckr-jupyterlab-variableinspector==3.0.9
 mypy-ls==0.5.1
-nbconvert==6.2.0
+nbconvert==6.3.0b0
 notebook==6.4.12
 pyls-black==0.4.7
 pyls-flake8==0.4.0
