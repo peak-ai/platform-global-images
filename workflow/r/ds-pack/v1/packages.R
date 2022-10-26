@@ -18,7 +18,8 @@ install.packages(
     'lubridate',
     'glue',
     'scales',
-    'tidymodels'
+    'tidymodels',
+    'aws.s3'
   ),
   dependencies=TRUE,
   Ncpus=4
