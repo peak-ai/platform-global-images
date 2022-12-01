@@ -7,7 +7,7 @@ This is done by using the `PEAK_USER_ID` build argument with a fixed value.
    ARG PEAK_USER_ID
    ENV PEAK_USER_ID=$PEAK_USER_ID
    ```
-2. Create a new user. This command checks whether the user exists and if it does not it adds the user and creates a home directory for the user at the path - `/home/peak-user`. Change the working directory to the user's home directory so that all new files are copied over/added in this directory.
+2. Create a new user - this command checks whether the user exists and if it does not it adds the user and creates a home directory for the user at the path - `/home/peak-user`. Change the working directory to the user's home directory so that all new files are copied over/added in this directory.
    ```Dockerfile
    RUN id peak-user || useradd -m -d /home/peak-user -u $PEAK_USER_ID peak-user
    WORKDIR /home/peak-user
@@ -20,7 +20,7 @@ This is done by using the `PEAK_USER_ID` build argument with a fixed value.
    ```Dockerfile
    USER $PEAK_USER_ID
    ```
-5. One important thing to remember is that when running the `COPY` command, we need to pass `--chown=peak-user` so that the user gets the required privileges on the files that are copied over. Here's how the command should look like
+5. One important thing to remember is that when running the `COPY` command, you need to pass `--chown=peak-user` so that the user gets the required privileges on the files that are copied over. Here's how the command should look like
    ```Dockerfile
    COPY --chown=peak-user . .
    ```
