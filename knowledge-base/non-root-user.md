@@ -44,7 +44,7 @@ FROM python:3.8.13-slim-buster
 ARG PEAK_USER_ID
 ENV PEAK_USER_ID=$PEAK_USER_ID
 
-# Add a new user, this must have the UserId of PEAK_USER_ID
+# Add a new user, this must have the User ID of PEAK_USER_ID
 RUN id peak-user || useradd -m -d /home/peak-user -u $PEAK_USER_ID peak-user
 
 # Give the new user the permissions to the directory that it might need
