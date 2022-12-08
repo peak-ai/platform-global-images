@@ -60,11 +60,11 @@ The following Python image is available:
 The following R image is available:
 - [ds-pack](./workspace/r/ds-pack)
 
+## Knowledge Base
+- The Docker images used on the platform should configure a default non-root user. More details around the same can be found [here](./knowledge-base/non-root-user.md).
+
 ## Contributing
 We really appreciate any contributions that you can make to the images. <P>To get started, please read our [contributing guide](./CONTRIBUTING.md) to familiarize yourself with our development process.
 
 ## License
 [GNU GPL](https://opensource.org/licenses/GPL-3.0)
-
-## Knowledge Base
-- The Docker images used on the platform should configure a default non-root user. More details around the same can be found [here](./knowledge-base/non-root-user.md).
