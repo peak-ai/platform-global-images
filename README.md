@@ -65,3 +65,6 @@ We really appreciate any contributions that you can make to the images. <P>To ge
 
 ## License
 [GNU GPL](https://opensource.org/licenses/GPL-3.0)
+
+## Knowledge Base
+- The Docker images used on the platform should configure a default non-root user. More details around the same can be found [here](./knowledge-base/non-root-user.md).
