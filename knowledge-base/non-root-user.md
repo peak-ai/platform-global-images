@@ -1,6 +1,6 @@
 # Non-root users and Peak
 When configuring Docker images for use by Workflows and APIs, they must include a default non-root user.
-This is done by using the `PEAK_USER_ID` build argument with a fixed value.
+This is done by using the `PEAK_USER_ID` build argument which represents the User ID that the non-root user should be created with. This is the User ID that the resources on the platform requires the container to run with.
 
 ## Creating an image with a non-root user
 1. Add the following block at the top of your Dockerfile right after the `FROM` statement. This adds a new user (`peak-user`) in the image, creates its home directory, and gives the user ownership of that directory. It also changes the working directory to the user's home directory.
@@ -9,7 +9,7 @@ This is done by using the `PEAK_USER_ID` build argument with a fixed value.
    ENV PEAK_USER_ID=$PEAK_USER_ID
 
    # Add a new user, this must have the User ID of PEAK_USER_ID
-   RUN id peak-user || useradd -m -d /home/peak-user -u $PEAK_USER_ID peak-user
+   RUN id peak-user || useradd -l -m -d /home/peak-user -u $PEAK_USER_ID peak-user
 
    # Give the new user the permissions to the directory that it might need
    RUN chown -R peak-user:peak-user /home/peak-user
@@ -26,7 +26,7 @@ This is done by using the `PEAK_USER_ID` build argument with a fixed value.
    ```Dockerfile
    RUN chown -R peak-user:peak-user /var/log
    ```
-4. Add the following block add the bottom of the Dockerfile. This runs the `chown` command again to give the user ownership of any files that were added after the first block ran. It also sets the default user for the container to the `peak-user`
+4. Add the following block to the bottom of the Dockerfile. This runs the `chown` command again to give the user ownership of any files that were added after the first block ran. It also sets the default user for the container to the `peak-user`
    ```Dockerfile
    RUN chown -R peak-user:peak-user /home/peak-user
    USER $PEAK_USER_ID
@@ -45,7 +45,7 @@ ARG PEAK_USER_ID
 ENV PEAK_USER_ID=$PEAK_USER_ID
 
 # Add a new user, this must have the User ID of PEAK_USER_ID
-RUN id peak-user || useradd -m -d /home/peak-user -u $PEAK_USER_ID peak-user
+RUN id peak-user || useradd -l -m -d /home/peak-user -u $PEAK_USER_ID peak-user
 
 # Give the new user the permissions to the directory that it might need
 RUN chown -R peak-user:peak-user /home/peak-user
@@ -58,7 +58,7 @@ WORKDIR /home/peak-user
 # ------------------------------------------------
 
 RUN apt-get update && \
-  apt install curl dnsutils unzip git jq libpq-dev python-dev build-essential -y 
+  apt-get install --no-install-recommends curl dnsutils unzip git jq libpq-dev python-dev build-essential -y 
 
 # Install AWS CLI
 RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.2.5.zip" -o "awscliv2.zip" \
@@ -68,7 +68,7 @@ RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.2.5.zip" 
 
 # Install all the required Python libraries
 COPY --chown=peak-user:peak-user requirements.txt /tmp/requirements.txt
-RUN pip install -r /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 # ------------------------------------------------
 # Set Permissions and make the user the default
