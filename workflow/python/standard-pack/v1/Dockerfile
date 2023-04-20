@@ -1,4 +1,4 @@
-FROM python:3.8.13-slim-buster
+FROM python:3.8-slim-buster
 
 RUN apt-get update && \
   apt install curl dnsutils unzip git jq libpq-dev python-dev build-essential -y 
