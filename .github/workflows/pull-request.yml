@@ -40,22 +40,14 @@ jobs:
             echo "$directory was changed"
           done
 
-      - name: Run docker build on changed images
-        if: steps.changed-directories.outputs.any_changed == 'true'
-        shell: bash
-        run: |
-          for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
-            tag=$(echo $directory | tr / -)
-            echo "Building $directory"
-            docker build $directory --build-arg PEAK_USER_ID=$PEAK_USER_ID -t $tag
-          done
-
       - name: Run snyk scan on changed images
         if: steps.changed-directories.outputs.any_changed == 'true'
         shell: bash
         id: snyk-scans
         run: |
-          npx snyk auth $SNYK_TOKEN
+          echo "${PEAK_USER_ID}"
+          echo "${SNYK_TOKEN:0:2}"
+          npx snyk auth ${{ secrets.PEAK_USER_ID }}
           mkdir -p /tmp/$BRANCH
           scan_summary="<table><tr><th>Image name</th><th>Critical</th><th>High</th><th>Medium</th><th>Low</th><th>Report</th></tr>"
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
