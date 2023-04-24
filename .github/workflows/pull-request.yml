@@ -32,7 +32,7 @@ jobs:
 
       - name: List all changed directories/images
         run: | 
-          echo ${SNYK_TOKEN:0:2}
+          npx snyk auth $SNYK_TOKEN
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             echo "$directory was changed"
           done
