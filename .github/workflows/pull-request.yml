@@ -31,7 +31,8 @@ jobs:
           dir_names: true
 
       - name: List all changed directories/images
-        run: |
+        run: | 
+          echo ${PEAK_USER_ID:0:2}
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             echo "$directory was changed"
           done
