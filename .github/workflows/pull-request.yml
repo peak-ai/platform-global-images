@@ -32,7 +32,7 @@ jobs:
 
       - name: List all changed directories/images
         run: | 
-          echo ${PEAK_USER_ID:0:2}
+          echo ${SNYK_TOKEN:0:2}
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             echo "$directory was changed"
           done
