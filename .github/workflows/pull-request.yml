@@ -17,6 +17,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          ref: ${{github.event.pull_request.head.ref}}
+          repository: ${{github.event.pull_request.head.repo.full_name}}
 
       - name: Get changed directories
         id: changed-directories
@@ -38,7 +41,7 @@ jobs:
 
       - name: Run docker build on changed images
         if: steps.changed-directories.outputs.any_changed == 'true'
-        shell: bash --noprofile --norc {0}
+        shell: bash
         run: |
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             tag=$(echo $directory | tr / -)
@@ -48,7 +51,7 @@ jobs:
 
       - name: Run snyk scan on changed images
         if: steps.changed-directories.outputs.any_changed == 'true'
-        shell: bash --noprofile --norc {0}
+        shell: bash
         id: snyk-scans
         run: |
           npx snyk auth $SNYK_TOKEN
