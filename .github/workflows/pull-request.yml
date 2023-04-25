@@ -43,7 +43,7 @@ jobs:
 
       - name: Run docker build on changed images
         if: steps.changed-directories.outputs.any_changed == 'true'
-        shell: bash
+        shell: bash --noprofile --norc {0}
         run: |
           for directory in ${{ steps.changed-directories.outputs.all_changed_files }}; do
             tag=$(echo $directory | tr / -)
@@ -53,7 +53,7 @@ jobs:
 
       - name: Run snyk scan on changed images
         if: steps.changed-directories.outputs.any_changed == 'true'
-        shell: bash
+        shell: bash --noprofile --norc {0}
         id: snyk-scans
         run: |
           npx snyk auth $SNYK_TOKEN
