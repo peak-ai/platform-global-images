@@ -33,6 +33,7 @@ jobs:
             .gitignore
             license
           dir_names: true
+          sha: ${{github.event.pull_request.head.sha}}
 
       - name: List all changed directories/images
         run: |
