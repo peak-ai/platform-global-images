@@ -11,10 +11,16 @@ Please read our [code of conduct](./CODE_OF_CONDUCT.md) before getting started.
 - Create a new branch, remember to give this branch a good name - something that explains its purpose.
 - Make changes to your branch.
 - Once you are happy with the changes, you are ready to create a PR. Remember to test your changes first.
+- Make sure to commit the modifications with a message that indicates the changes you've made. 
 - Please remember to update the required READMEs when you make any changes.
 
 ### Raising a PR
-- We have a template for PR description that will be prepopulated when you create a PR. Please go through it once and fill in all the required details before you make a PR. **A PR that doesn't use the proper template or doesn't have all the details filled in will be rejected.**
+- We have a template for PR description that will be prepopulated when you create a PR. Please go through it once and fill in all the required details before you make a PR. 
+
+- **Contributors, pay attention! We want you to be successful with your efforts!**
+
+- **Please use our PR template and fill in all of the details so that we can fully assess your changes. PRs that are incomplete or improperly prepared will not be accepted.** 
+
 - After review and testing the PR will be merged.
 
 ### What Next?
