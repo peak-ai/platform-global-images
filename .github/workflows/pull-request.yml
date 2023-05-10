@@ -24,7 +24,7 @@ jobs:
 
       - name: Get changed directories
         id: changed-directories
-        uses: tj-actions/changed-files@v23
+        uses: tj-actions/changed-files@v35.9.2
         with:
           files_ignore: |
             *.md
@@ -33,6 +33,7 @@ jobs:
             .gitignore
             license
           dir_names: true
+          dir_names_max_depth: 4
           sha: ${{github.event.pull_request.head.sha}}
 
       - name: List all changed directories/images
