@@ -54,6 +54,10 @@ RUN apt-get update \
     libfreetype6 \
     libxi6 \
     libpq-dev \
+    wget \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # install AWS CLI v2
