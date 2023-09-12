@@ -1,16 +1,16 @@
-# workspace-r-ds-pack-v1
+# workspace-r-ds-pack-2.0.0-base-4.3.1
 This is the R Data Science pack image made for Workspaces. 
 The image runs a [RStudio](https://jupyter.org/hub) server and comes pre-installed pre-installed with all of the essential and most used packages.
 
 ## Image Details
 ### Base image
-This image uses [rocker/verse:4.2.0](https://hub.docker.com/layers/verse/rocker/verse/4.2.0/images/sha256-771d3edecc8fe72ed56c41f92656c4062e4ffc79723ede8961ce4ec068f0cbfb?context=explore) as its base which is maintained by [the Rocker Community](https://github.com/rocker-org/rocker).
+This image uses [rocker/verse:4.3.0](https://hub.docker.com/layers/rocker/verse/4.3.1/images/sha256-9fa09814225979a80c398b5778ecd61d853e0ca788f806c2800d9b336d4634ca?context=explore) as its base which is maintained by [the Rocker Community](https://github.com/rocker-org/rocker).
 
 ### OS and other details
 ```
-Ubuntu         20.04.4 LTS (Focal Fossa)
+Ubuntu         22.04.3 LTS (Jammy Jellyfish)
 Linux Kernel   4.14.276-211.499.amzn2.x86_64
-R              4.2.0
+R              4.3.1
 ```
 
 ### Linux packages installed
@@ -30,6 +30,11 @@ less                    551
 latex                   3.141592653-2.6-1.40.24
 redshift-odbc-driver    1.4.27.1000
 snowflake-odbc-driver   2.24.4
+```
+
+### Python packages installed
+```
+peak-sdk                1.0.0
 ```
 
 ### R libraries installed
