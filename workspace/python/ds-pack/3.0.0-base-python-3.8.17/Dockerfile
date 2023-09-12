@@ -102,5 +102,5 @@ EXPOSE 8000
 CMD ["jupyterhub", \
     "--Spawner.default_url=/lab", \
     "--Spawner.http_timeout=90", \
-    "--NotebookApp.terminado_settings = {shell_command: [/bin/bash]}" \
+    "--NotebookApp.terminado_settings={'shell_command':'[/bin/bash]'}" \
     ]
