@@ -31,7 +31,7 @@ RUN apt-get update \
     vim \
     fish \
     zsh \
-    r-base \
+    # r-base \
     build-essential \
     sudo \
     nodejs \
@@ -48,11 +48,11 @@ RUN apt-get update \
     lmodern \
     docker-ce \
     less \
-    # libxext6 \
-    # libxrender1 \
-    # libxtst6 \
-    # libfreetype6 \
-    # libxi6 \
+    libxext6 \
+    libxrender1 \
+    libxtst6 \
+    libfreetype6 \
+    libxi6 \
     && rm -rf /var/lib/apt/lists/*
 
 # install AWS CLI v2
