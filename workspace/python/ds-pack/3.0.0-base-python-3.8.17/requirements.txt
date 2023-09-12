@@ -3,13 +3,13 @@ jupyter-server-proxy==4.0.0
 jupyterhub==4.0.2
 jupyterlab-git==0.42.0
 jupyterlab-lsp==4.2.0
-jupyterlab==4.0.5
+jupyterlab==3.6.5
 jupyterlab_widgets==3.0.8
 jupytext==1.15.1
 lckr-jupyterlab-variableinspector==3.0.9
 mypy-ls==0.5.1
 nbconvert==7.8.0
-notebook==7.0.3
+notebook==6.5.5
 pyls-black==0.4.7
 pyls-flake8==0.4.0
 pyls-isort==0.2.2
