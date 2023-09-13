@@ -1,14 +1,14 @@
-# workspace-python-ds-pack-v1
+# workspace-python-ds-pack-3.0.0-base-python-3.8.17
 This is the Python Data Science pack image made for Workspaces. 
 The image runs a [Jupyterhub](https://jupyter.org/hub) server that has [PyCharm](https://lp.jetbrains.com/projector/) and [VSCode](https://github.com/coder/code-server) pre-installed with all of the essential and most used packages.
 
 ## Image details
 ### Base image
-This image uses [python:3.8.13-slim-buster](https://hub.docker.com/layers/python/library/python/3.8.13-slim-buster/images/sha256-6258dcdb5fea7b710bfcfc3c889e022e4c6e9dd0ea962cfa73fbc130eff2c174?context=explore) as its base which is maintained by [the Docker Community](https://github.com/docker-library/python).
+This image uses [python:3.8.17-bookworm](https://hub.docker.com/layers/library/python/3.8.17-bookworm/images/sha256-bd86c439c587a78e17b8406c6d85c95fab696aae5572e23a7e385ccde75487ad?context=explore) as its base which is maintained by [the Docker Community](https://github.com/docker-library/python).
 
 ### OS and other details
 ```
-Debian         GNU/Linux 10 (buster)
+Debian         GNU/Linux 12 (bookworm)
 Linux Kernel   5.10.104-linuxkit
 Python         3.8.13
 ```
