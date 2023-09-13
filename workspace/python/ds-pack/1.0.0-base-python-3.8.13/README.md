@@ -1,4 +1,4 @@
-# workspace-python-ds-pack-v1
+# workspace-python-ds-pack-1.0.0-base-python-3.8.13
 This is the Python Data Science pack image made for Workspaces. 
 The image runs a [Jupyterhub](https://jupyter.org/hub) server that has [PyCharm](https://lp.jetbrains.com/projector/) and [VSCode](https://github.com/coder/code-server) pre-installed with all of the essential and most used packages.
 
