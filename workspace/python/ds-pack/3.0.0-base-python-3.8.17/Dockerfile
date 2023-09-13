@@ -53,6 +53,7 @@ RUN apt-get update \
     libxtst6 \
     libfreetype6 \
     libxi6 \
+    openssl \
     && rm -rf /var/lib/apt/lists/*
 
 # install AWS CLI v2
