@@ -6,7 +6,7 @@ def setup_codeserver():
                 '--auth', 
                 'none', 
                 '--disable-telemetry', 
-                '--port={port}'
+                '--port={port}',
                 '--install-extension',
                 'cweijan.vscode-database-client2'],
     'launcher_entry': {
