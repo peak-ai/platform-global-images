@@ -10,25 +10,25 @@ This image uses [rocker/verse:4.3.0](https://hub.docker.com/layers/rocker/verse/
 ### OS and other details
 ```
 Ubuntu         22.04.3 LTS (Jammy Jellyfish)
-Linux Kernel   4.14.276-211.499.amzn2.x86_64
+Linux Kernel   5.10.186-179.751.amzn2.x86_64
 R              4.3.1
 ```
 
 ### Linux packages installed
 ```
-aws-cli                 2.2.5
-curl                    7.68.0
-git                     2.25.1
+aws-cli                 2.7.4
+curl                    7.81.0
+git                     2.34.1
 jq                      1.6
-nano                    4.8
-vim                     8.1
-fish                    3.1.0
-zsh                     5.8
-docker                  20.10.17
-htop                    2.2.0
-pandoc                  2.17.1.1
-less                    551
-latex                   3.141592653-2.6-1.40.24
+nano                    6.2
+vim                     8.2
+fish                    3.3.1
+zsh                     5.8.1
+docker                  24.0.6
+htop                    3.0.5
+pandoc                  3.1.1
+less                    590
+latex                   3.141592653-2.6-1.40.25
 redshift-odbc-driver    1.4.27.1000
 snowflake-odbc-driver   2.24.4
 ```

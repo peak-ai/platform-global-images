@@ -10,7 +10,7 @@ This image uses [python:3.8.17-bookworm](https://hub.docker.com/layers/library/p
 ### OS and other details
 ```
 Debian         GNU/Linux 12 (bookworm)
-Linux Kernel   5.10.104-linuxkit
+Linux Kernel   5.10.186-179.751.amzn2.x86_64
 Python         3.8.13
 ```
 
