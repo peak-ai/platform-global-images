@@ -54,6 +54,7 @@ RUN apt-get update \
     libfreetype6 \
     libxi6 \
     openssl \
+    unzip \
     && rm -rf /var/lib/apt/lists/*
 
 # install AWS CLI v2
@@ -93,7 +94,7 @@ RUN git config --global credential.helper store \
 
 # Install Projector & PyCharm Community
 COPY projector-proxy projector-proxy
-RUN pip install --no-cache-dir projector-installer==1.5.2 --upgrade \
+RUN pip install --no-cache-dir projector-installer==1.7.0--upgrade \
     && projector --accept-license --config-directory /usr/local/share/projector \
     ide autoinstall --config-name pycharm --ide-name "PyCharm Community Edition 2021.3.1" \
     && chmod -R a=rwx /usr/local/share/projector \
