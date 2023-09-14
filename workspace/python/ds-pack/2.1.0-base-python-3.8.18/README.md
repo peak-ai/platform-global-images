@@ -1,17 +1,17 @@
-# workspace-python-ds-pack-2.1.0-base-python-3.8.17
+# workspace-python-ds-pack-2.1.0-base-python-3.8.18
 This is the Python Data Science pack image made for Workspaces. 
 The image runs a [Jupyterhub](https://jupyter.org/hub) server that has [PyCharm](https://lp.jetbrains.com/projector/) and [VSCode](https://github.com/coder/code-server) pre-installed with all of the essential and most used packages.
 The images also comes pre installed with [peak-sdk](https://docs.peak.ai/sdk/).
 
 ## Image details
 ### Base image
-This image uses [python:3.8.17-bookworm](https://hub.docker.com/layers/library/python/3.8.17-bookworm/images/sha256-bd86c439c587a78e17b8406c6d85c95fab696aae5572e23a7e385ccde75487ad?context=explore) as its base which is maintained by [the Docker Community](https://github.com/docker-library/python).
+This image uses [python:3.8.18-slim-bookworm](https://hub.docker.com/layers/library/python/3.8.18-slim-bookworm/images/sha256-05928e4bd868a725705a451f59eab0638a3509899099955bb326624a3f9bb597?context=explore) as its base which is maintained by [the Docker Community](https://github.com/docker-library/python).
 
 ### OS and other details
 ```
 Debian         GNU/Linux 12 (bookworm)
 Linux Kernel   5.10.186-179.751.amzn2.x86_64
-Python         3.8.13
+Python         3.8.18
 ```
 
 ### Important Linux packages installed
