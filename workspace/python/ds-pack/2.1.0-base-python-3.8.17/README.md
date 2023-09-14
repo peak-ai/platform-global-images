@@ -1,6 +1,7 @@
 # workspace-python-ds-pack-2.1.0-base-python-3.8.17
 This is the Python Data Science pack image made for Workspaces. 
 The image runs a [Jupyterhub](https://jupyter.org/hub) server that has [PyCharm](https://lp.jetbrains.com/projector/) and [VSCode](https://github.com/coder/code-server) pre-installed with all of the essential and most used packages.
+The images also comes pre installed with [peak-sdk](https://docs.peak.ai/sdk/).
 
 ## Image details
 ### Base image
