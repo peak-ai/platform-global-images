@@ -17,6 +17,7 @@ def setup_projector():
                 "pycharm_icon.svg",
             ),
         },
+        "url": "/proxy/RNYs1wFxsjnEhVKYlMwI",
         # default projector config runs on port 9999
         "port": 9999,
         # set timeout for projector to become responsive to 60s, as it can sometimes

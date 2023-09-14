@@ -13,7 +13,4 @@ setuptools.setup(
         ]
     },
     package_data={"jupyter_projector_proxy": ["icons/*"]},
-    attrs={
-      'token': 'RNYs1wFxsjnEhVKYlMwI'
-    },
 )
