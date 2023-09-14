@@ -86,9 +86,6 @@ RUN curl -fsSL https://code-server.dev/install.sh \
     | sh -s -- --version 4.16.1 \
     && pip install --no-cache-dir ./codeserver-proxy
 
-# Install cweijan.vscode-database-client2
-# RUN code-server --install-extension cweijan.vscode-database-client2@6.6.3
-
 RUN git config --global credential.helper store \
     && git config --global core.filemode false
 
@@ -103,9 +100,8 @@ RUN pip install --no-cache-dir projector-installer==1.7.0 --upgrade \
 # force shell to bash as Peak Platform isn't respecting jupyterhub option
 RUN ln -sf /bin/bash /bin/sh
 
+COPY setup_notebook.sh /usr/local/bin/setup_notebook.sh
+RUN chmod +x /usr/local/bin/setup_notebook.sh
+
 EXPOSE 8000
-CMD ["jupyterhub", \
-    "--Spawner.default_url=/lab", \
-    "--Spawner.http_timeout=90", \
-    "--NotebookApp.terminado_settings={'shell_command':'[/bin/bash]'}" \
-    ]
+CMD ["/usr/local/bin/setup_notebook.sh"]
