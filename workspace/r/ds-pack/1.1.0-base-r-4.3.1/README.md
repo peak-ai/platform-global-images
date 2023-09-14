@@ -1,6 +1,7 @@
-# workspace-r-ds-pack-2.0.0-base-4.3.1
+# workspace-r-ds-pack-1.0.0-base-4.3.1
 This is the R Data Science pack image made for Workspaces. 
 The image runs a [RStudio](https://jupyter.org/hub) server and comes pre-installed pre-installed with all of the essential and most used packages.
+The images also comes pre installed with [peak-sdk](https://docs.peak.ai/sdk/).
 
 ## Image Details
 ### Base image
