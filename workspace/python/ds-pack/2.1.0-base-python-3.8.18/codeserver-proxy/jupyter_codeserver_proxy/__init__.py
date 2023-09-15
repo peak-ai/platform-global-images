@@ -2,9 +2,7 @@ import os
 
 def setup_codeserver():
   return {
-    'command': ['code-server'
-                '--install-extension cweijan.vscode-database-client2@6.6.3',
-                '&&',
+    'command': ['code-server --install-extension cweijan.vscode-database-client2@6.6.3 && ',
                 'code-server', 
                 '--auth', 
                 'none', 
