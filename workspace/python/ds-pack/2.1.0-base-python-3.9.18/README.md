@@ -58,6 +58,11 @@ peak-sdk                          1.0.0
 jupysql                           0.10.1
 ```
 
+### VS Code extensions installed
+```
+cweijan.vscode-database-client2   6.6.3    
+```
+
 ## Building the image
 To build the image locally, run the docker build command and pass in the required build arguments:
 ```

@@ -14,6 +14,11 @@ Linux Kernel   5.10.186-179.751.amzn2.x86_64
 Python         3.11.5
 ```
 
+### VS Code extensions installed
+```
+cweijan.vscode-database-client2   6.6.3    
+```
+
 ### Important Linux packages installed
 ```
 aws-cli        2.7.4

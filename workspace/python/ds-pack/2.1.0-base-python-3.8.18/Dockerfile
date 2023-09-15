@@ -100,8 +100,9 @@ RUN pip install --no-cache-dir projector-installer==1.7.0 --upgrade \
 # force shell to bash as Peak Platform isn't respecting jupyterhub option
 RUN ln -sf /bin/bash /bin/sh
 
-COPY setup_notebook.sh /usr/local/bin/setup_notebook.sh
-RUN chmod +x /usr/local/bin/setup_notebook.sh
-
 EXPOSE 8000
-CMD ["/usr/local/bin/setup_notebook.sh"]
+CMD ["jupyterhub", \
+    "--Spawner.default_url=/lab", \
+    "--Spawner.http_timeout=90", \
+    "--NotebookApp.terminado_settings={'shell_command':'[/bin/bash]'}" \
+    ]
