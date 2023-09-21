@@ -85,9 +85,13 @@ COPY codeserver-proxy codeserver-proxy
 RUN curl -fsSL https://code-server.dev/install.sh \
     | sh -s -- --version 4.16.1 \
     && pip install --no-cache-dir ./codeserver-proxy
-RUN curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output vscode_cli.tar.gz
-RUN tar -xf vscode_cli.tar.gz
-COPY ./code /usr/local/vscode
+
+# vscode cli
+RUN curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output vscode_cli.tar.gz \
+    && tar -xf vscode_cli.tar.gz \
+    && cp ./code /usr/local/vscode-cli
+
+COPY scripts scripts
 
 RUN git config --global credential.helper store \
     && git config --global core.filemode false
