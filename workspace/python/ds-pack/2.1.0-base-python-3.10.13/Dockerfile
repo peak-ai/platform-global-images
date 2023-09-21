@@ -89,7 +89,7 @@ RUN curl -fsSL https://code-server.dev/install.sh \
 # vscode cli
 RUN curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output vscode_cli.tar.gz \
     && tar -xf vscode_cli.tar.gz \
-    && cp ./code /usr/local/vscode-cli
+    && cp ./code /usr/local/bin
 
 COPY scripts scripts
 
