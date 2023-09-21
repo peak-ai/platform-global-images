@@ -31,7 +31,7 @@ RUN apt-get update \
     vim \
     fish \
     zsh \
-    # r-base \
+    r-base \
     build-essential \
     sudo \
     nodejs \

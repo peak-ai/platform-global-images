@@ -66,7 +66,7 @@ jupysql                           0.10.1
 ## Building the image
 To build the image locally, run the docker build command and pass in the required build arguments:
 ```
-docker build . -t workflow-python-ds-pack-2.1.0-base-python-3.8.17
+docker build . -t workflow-python-ds-pack-2.1.0-base-python-3.11.5
 ```
 
 ## Using the image

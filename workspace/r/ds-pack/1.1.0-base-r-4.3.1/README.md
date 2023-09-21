@@ -54,7 +54,7 @@ You can find more details about setting up ODBC for `redshift` [here](https://do
 ## Building the image
 To build the image locally, run the docker build command and pass in the required build arguments:
 ```
-docker build . -t workflow-python-ds-pack-v1
+docker build . -t workflow-r-ds-pack-1.0.0-base-4.3.1
 ```
 
 ## Using the image
