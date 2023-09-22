@@ -3,6 +3,8 @@ This is the Python Data Science pack image made for Workspaces.
 The image runs a [Jupyterhub](https://jupyter.org/hub) server that has [VSCode](https://github.com/coder/code-server) pre-installed with all of the essential and most used packages.
 The images also comes pre installed with [peak-sdk](https://docs.peak.ai/sdk/).
 
+Note: The image **doesn't support** [PyCharm](https://lp.jetbrains.com/projector/) unlike previous Python workspace image versions.
+
 ## Image details
 ### Base image
 This image uses [3.11.5-slim-bookworm](https://hub.docker.com/layers/library/python/3.11.5-slim-bookworm/images/sha256-948a09a8f42c0b2f4308ef563dc3b76de59ebfc5d83ccb7ed7a0fbbb6c5b4713?context=explore) as its base which is maintained by [the Docker Community](https://github.com/docker-library/python).
