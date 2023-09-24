@@ -1,1 +1,0 @@
-/usr/local/vscode-cli tunnel restart
