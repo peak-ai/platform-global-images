@@ -1,11 +1,15 @@
+/**
+ * The script aims to setup a vscode tunnel for the workspace. It does by starting a tunnel in the background.
+ * Usage - node /vscode-tunnel/scripts setup.js
+ */
 const { spawn } = require('child_process');
 const fs = require('fs');
-const { sleep, printOutput } = require('./helpers');
+const { sleep, printOutput } = require('./utils');
 
 function main() {
   const scriptPath = '/vscode-tunnel/scripts/install.sh';
 
-  // Open a file to store the child process's output (optional)
+  // Open a file to store the child process's output
   const outputLogFile = fs.openSync('output.log', 'a');
   const errorLogFile = fs.openSync('error.log', 'a');
 
