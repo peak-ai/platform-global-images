@@ -58,3 +58,5 @@ function main() {
   // Unref the child process to allow the Node.js process to exit
   childProcess.unref();
 }
+
+main();
