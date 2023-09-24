@@ -5,9 +5,9 @@ function sleep(milliseconds) {
   while (new Date().getTime() - start < milliseconds);
 }
 
-function printOutput() {
+function printOutput(outputLogFilePath) {
   // Read the file and print its contents
-  fs.readFile('output.log', 'utf8', (err, data) => {
+  fs.readFile(outputLogFilePath, 'utf8', (err, data) => {
     if (err) {
       if (err.code === 'ENOENT') {
         console.log(`File '${fileName}' not found.`);
