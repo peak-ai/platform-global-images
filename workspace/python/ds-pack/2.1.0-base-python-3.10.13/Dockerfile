@@ -91,7 +91,7 @@ RUN curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alp
     && tar -xf vscode_cli.tar.gz \
     && cp ./code /usr/local/bin
 
-COPY scripts scripts
+COPY vscode-tunnel vscode-tunnel
 
 RUN git config --global credential.helper store \
     && git config --global core.filemode false
