@@ -1,14 +1,34 @@
 /**
- * The script aims to start a vscode tunnel for the workspace. It does by starting a tunnel in the background.
- * Usage - node /vscode-tunnel/scripts start.js
+ * The script aims to setup a vscode tunnel for the workspace. It does by starting a tunnel in the background.
+ * Usage - node /vscode-tunnel/scripts setup.js
  */
 const { spawn } = require('child_process');
 const fs = require('fs');
-const { sleep, printOutput } = require('./utils');
 
 const outputLogFilePath = '/vscode-tunnel/logs/output.log';
 const errorLogFilePath = '/vscode-tunnel/logs/error.log';
-const scriptPath = '/vscode-tunnel/scripts/start.js';
+const scriptPath = '/vscode-tunnel/scripts/start.sh';
+
+function sleep(milliseconds) {
+  const start = new Date().getTime();
+  while (new Date().getTime() - start < milliseconds);
+}
+
+function printOutput() {
+  // Read the file and print its contents
+  fs.readFile(outputLogFilePath, 'utf8', (err, data) => {
+    if (err) {
+      if (err.code === 'ENOENT') {
+        console.log(`File '${fileName}' not found.`);
+      } else {
+        console.error(`An error occurred: ${err}`);
+      }
+      return;
+    }
+
+    console.log(data);
+  });
+}
 
 function main() {
 
@@ -37,7 +57,7 @@ function main() {
     console.error('stdin is not writable for the child process.');
   }
 
-  console.log('Starting tunnel...');
+  console.log('Sta');
   sleep(3000);
   printOutput(outputLogFilePath);
 

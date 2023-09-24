@@ -7,7 +7,7 @@ This README provides instructions for setting up and managing remote tunnels usi
 To create a new remote tunnel for your workspace, you can use the provided Node.js script:
 
 ```bash
-node /vscode-tunnel/scripts/setup.js
+node /vscode-tunnel/scripts/start.js
 ```
 
 Running this script initializes and starts a new tunnel in the background, which can be accessed remotely. To ensure its functionality, a brief authentication step using GitHub is required.
@@ -45,7 +45,7 @@ bash /vscode-tunnel/scripts/stop.sh
 To start a previously stopped tunnel, use this command:
 
 ```bash
-bash /vscode-tunnel/scripts/start.sh
+node /vscode-tunnel/scripts/start.js
 ```
 
 ## Additional Notes
