@@ -3,7 +3,7 @@ const fs = require('fs');
 const { sleep, printOutput } = require('./helpers');
 
 function main() {
-  const scriptPath = '/vscode-tunnel/scripts/install.sh';
+  const scriptPath = '/vscode-tunnel/scripts/start.js';
 
   // Open a file to store the child process's output (optional)
   const outputLogFile = fs.openSync('output.log', 'a');
@@ -30,7 +30,7 @@ function main() {
     console.error('stdin is not writable for the child process.');
   }
 
-  console.log('Initating tunnel creation...');
+  console.log('Starting tunnel...');
   sleep(3000);
   printOutput();
 
