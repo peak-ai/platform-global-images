@@ -1,7 +1,8 @@
 # workspace-python-ds-pack-2.0.0-base-python-3.11.2
 This is the Python Data Science pack image made for Workspaces. 
 The image runs a [Jupyterhub](https://jupyter.org/hub) server that has [VSCode](https://github.com/coder/code-server) pre-installed with all of the essential and most used packages.
-Note: It doesn't support [PyCharm](https://lp.jetbrains.com/projector/) unlike previous Python workspace image versions.
+
+Note: The **doesn't support** [PyCharm](https://lp.jetbrains.com/projector/) unlike previous Python workspace image versions.
 
 ## Image details
 ### Base image

@@ -19,7 +19,7 @@ RUN apt-get update \
         "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
         $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-key '95C0FAF38DB3CCAD0C080A7BDC78B2DDEABC47B7' \
-    && add-apt-repository 'deb http://cloud.r-project.org/bin/linux/debian buster-cran40/' \
+    && add-apt-repository 'deb http://cloud.r-project.org/bin/linux/debian bookworm-cran40/' \
     # node
     && curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
     && apt-get update \
@@ -31,7 +31,8 @@ RUN apt-get update \
     vim \
     fish \
     zsh \
-    r-base \
+   r-base=4.2.2.20221110-2 \
+    r-recommended=4.2.2.20221110-2 \
     build-essential \
     sudo \
     nodejs \

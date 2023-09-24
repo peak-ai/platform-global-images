@@ -24,7 +24,7 @@ nano           7.2
 vim            9.0
 fish           3.6.0
 zsh            5.9
-R              4.2.0
+R              4.3.1
 node           18.17.1
 docker         24.0.6
 htop           3.2.0
