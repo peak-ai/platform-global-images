@@ -94,6 +94,8 @@ RUN curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alp
 
 COPY vscode-tunnel vscode-tunnel
 
+RUN chmod 777 vscode-tunnel
+
 RUN git config --global credential.helper store \
     && git config --global core.filemode false
 

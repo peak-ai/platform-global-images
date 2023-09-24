@@ -1,7 +1,6 @@
 const { spawn } = require('child_process');
 const fs = require('fs');
 
-
 function sleep(milliseconds) {
   const start = new Date().getTime();
   while (new Date().getTime() - start < milliseconds);
@@ -24,7 +23,7 @@ function printOutput() {
 }
 
 function main() {
-  const scriptPath = 'install.sh';
+  const scriptPath = '/vscode-tunnel/scripts/install.sh';
 
   // Open a file to store the child process's output (optional)
   const outputLogFile = fs.openSync('output.log', 'a');
