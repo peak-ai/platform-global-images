@@ -76,7 +76,7 @@ function main() {
 
   console.log('Starting tunnel...');
   sleep(3000);
-  printOutput(outputLogFilePath);
+  printOutput();
 
   // Unref the child process to allow the Node.js process to exit
   childProcess.unref();
