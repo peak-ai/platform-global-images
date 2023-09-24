@@ -28,6 +28,23 @@ function printOutput() {
 
     console.log(data);
   });
+
+  // Check for errors if any
+  fs.readFile(errorLogFilePath, 'utf8', (err, data) => {
+    if (err) {
+      if (err.code === 'ENOENT') {
+        console.log(`File '${fileName}' not found.`);
+      } else {
+        console.error(`An error occurred: ${err}`);
+      }
+      return;
+    }
+
+    if (data.length) {
+      console.error('There was an error creating the tunnel.');
+      console.error(data);
+    }
+  });
 }
 
 function main() {
@@ -57,7 +74,7 @@ function main() {
     console.error('stdin is not writable for the child process.');
   }
 
-  console.log('Sta');
+  console.log('Starting tunnel...');
   sleep(3000);
   printOutput(outputLogFilePath);
 
