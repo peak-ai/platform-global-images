@@ -38,6 +38,7 @@ htop           3.2.0
 pandoc         2.17.1.1
 less           590
 latex          3.141592653-2.6-1.40.24
+vscode-cli     1.82.2
 ```
 
 ### Python libraries installed

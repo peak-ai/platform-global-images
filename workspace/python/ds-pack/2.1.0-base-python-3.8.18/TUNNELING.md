@@ -4,7 +4,7 @@ This README provides instructions for setting up and managing remote tunnels usi
 
 ## Initializing a Remote Tunnel
 
-To create a new remote tunnel for your workspace, you can use the provided Node.js script:
+To create a new remote tunnel for your workspace, you can use the provided bash script:
 
 ```bash
 bash /vscode-tunnel/scripts/start.sh
