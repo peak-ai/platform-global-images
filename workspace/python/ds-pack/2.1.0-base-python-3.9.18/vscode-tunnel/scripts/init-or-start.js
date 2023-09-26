@@ -90,17 +90,6 @@ function main() {
   fs.closeSync(outputLogFile);
   fs.closeSync(errorLogFile);
 
-  // Check if stdin is writable before sending user input
-  if (childProcess.stdin) {
-    const userInput = 'User input goes here\n';
-    childProcess.stdin.write(userInput);
-
-    // Optionally, end the input stream if there's nothing more to send
-    childProcess.stdin.end();
-  } else {
-    console.error('stdin is not writable for the child process.');
-  }
-
   console.log('Starting tunnel...');
   // initial wait
   sleep(3000);
