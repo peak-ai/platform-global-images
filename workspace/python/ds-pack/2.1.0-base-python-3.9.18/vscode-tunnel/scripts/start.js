@@ -38,6 +38,7 @@ function waitForDeviceVerification() {
       } else {
         console.error(`An error occurred: ${err}`);
       }
+      break;
     }
   }
 }
