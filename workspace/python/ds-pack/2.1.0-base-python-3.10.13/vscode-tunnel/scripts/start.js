@@ -14,37 +14,63 @@ function sleep(milliseconds) {
   while (new Date().getTime() - start < milliseconds);
 }
 
+function waitForDeviceVerification() {
+  while (true) {
+    console.log('Waiting for device verification...');
+    try {
+      const data = fs.readFileSync(outputLogFilePath, 'utf8');
+      const index = data.lastIndexOf('Open this link in your browser');
+      if (index >= 0) {
+        console.log(data.substring(index));
+        break;
+      }
+      // check for errors if any
+      const errors = fs.readFileSync(errorLogFilePath, 'utf8');
+      if (errors.length) {
+        console.error('There was an error creating the tunnel.');
+        console.error(error);
+        break;
+      }
+      sleep(4000);
+    } catch (error) {
+      if (error.code === 'ENOENT') {
+        console.log(`File '${fileName}' not found.`);
+      } else {
+        console.error(`An error occurred: ${err}`);
+      }
+    }
+  }
+}
+
 function printOutput() {
   // Read the file and print its contents
-  fs.readFile(outputLogFilePath, 'utf8', (err, data) => {
-    if (err) {
-      if (err.code === 'ENOENT') {
-        console.log(`File '${fileName}' not found.`);
-      } else {
-        console.error(`An error occurred: ${err}`);
-      }
-      return;
-    }
-
+  try {
+    const data = fs.readFileSync(outputLogFilePath, 'utf8');
     console.log(data);
-  });
-
-  // Check for errors if any
-  fs.readFile(errorLogFilePath, 'utf8', (err, data) => {
-    if (err) {
-      if (err.code === 'ENOENT') {
-        console.log(`File '${fileName}' not found.`);
-      } else {
-        console.error(`An error occurred: ${err}`);
-      }
-      return;
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      console.log(`File '${fileName}' not found.`);
+    } else {
+      console.error(`An error occurred: ${err}`);
     }
+  }
 
+  try {
+    const data = fs.readFileSync(errorLogFilePath, 'utf8');
     if (data.length) {
       console.error('There was an error creating the tunnel.');
       console.error(data);
+      return false;
     }
-  });
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      console.log(`File '${fileName}' not found.`);
+    } else {
+      console.error(`An error occurred: ${err}`);
+    }
+  }
+
+  return true;
 }
 
 function main() {
@@ -75,8 +101,13 @@ function main() {
   }
 
   console.log('Starting tunnel...');
+  // initial wait
   sleep(3000);
-  printOutput();
+  const result = printOutput();
+
+  if (result) {
+    waitForDeviceVerification();
+  }
 
   // Unref the child process to allow the Node.js process to exit
   childProcess.unref();
