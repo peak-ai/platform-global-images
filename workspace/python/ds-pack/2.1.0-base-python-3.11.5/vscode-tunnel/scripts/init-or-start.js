@@ -7,7 +7,7 @@ const fs = require('fs');
 
 const outputLogFilePath = '/vscode-tunnel/logs/output.log';
 const errorLogFilePath = '/vscode-tunnel/logs/error.log';
-const scriptPath = '/vscode-tunnel/scripts/start.sh';
+const scriptPath = '/vscode-tunnel/scripts/tunnel.sh';
 
 function sleep(milliseconds) {
   const start = new Date().getTime();
