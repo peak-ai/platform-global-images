@@ -65,6 +65,10 @@ peak-sdk                          1.0.0
 jupysql                           0.10.1
 ```
 
+### VS Code Tunneling
+
+The image supports creating [remote tunnels](https://code.visualstudio.com/docs/remote/tunnels). For simplicity the image comes in handy with some node/bash scripts which can be used to `initialise`, `start`, `stop`, and `restart` the remote tunnels. More info can be found [here](./TUNNELING.md).
+
 ## Building the image
 To build the image locally, run the docker build command and pass in the required build arguments:
 ```
