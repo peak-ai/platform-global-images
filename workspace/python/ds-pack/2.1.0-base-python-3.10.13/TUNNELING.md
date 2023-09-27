@@ -7,7 +7,7 @@ This README provides instructions for setting up and managing remote tunnels usi
 To create a new remote tunnel for your workspace, you can use the provided bash script:
 
 ```bash
-bash /vscode-tunnel/scripts/start.sh
+start-tunnel
 ```
 
 Running this script initializes and starts a new tunnel in the background, which can be accessed remotely. To ensure its functionality, a brief authentication step using GitHub is required.
@@ -29,7 +29,7 @@ That's it! Your new, secure tunnel should now be active and accessible at the fo
 If you need to restart your tunnel for smooth operation, you can use the following command:
 
 ```bash
-bash /vscode-tunnel/scripts/refresh.sh
+restart-tunnel
 ```
 
 ### Stopping a Tunnel
@@ -37,7 +37,7 @@ bash /vscode-tunnel/scripts/refresh.sh
 To stop an active tunnel, use the following command:
 
 ```bash
-bash /vscode-tunnel/scripts/stop.sh
+stop-tunnel
 ```
 
 ### Starting a Tunnel
@@ -45,7 +45,7 @@ bash /vscode-tunnel/scripts/stop.sh
 To start a previously stopped tunnel, use this command:
 
 ```bash
-bash /vscode-tunnel/scripts/start.sh
+start-tunnel
 ```
 
 ### Verifying the status of tunnel
@@ -53,13 +53,7 @@ bash /vscode-tunnel/scripts/start.sh
 To check the status of the tunnel, use this command:
 
 ```bash
-bash /vscode-tunnel/scripts/status.sh
-```
-
-To start a previously stopped tunnel, use this command:
-
-```bash
-bash /vscode-tunnel/scripts/start.sh
+tunnel-status
 ```
 
 ## Additional Notes
