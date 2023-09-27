@@ -48,6 +48,20 @@ To start a previously stopped tunnel, use this command:
 bash /vscode-tunnel/scripts/start.sh
 ```
 
+### Verifying the status of tunnel
+
+To check the status of the tunnel, use this command:
+
+```bash
+bash /vscode-tunnel/scripts/status.sh
+```
+
+To start a previously stopped tunnel, use this command:
+
+```bash
+bash /vscode-tunnel/scripts/start.sh
+```
+
 ## Additional Notes
 
 To view the logs of any running or closed tunnel, you can refer to the `output.log` file located at `/vscode-tunnel/logs/output.log`. Similarly, any errors related to running or closed tunnels can be found in the `/vscode-tunnel/logs/error.log` file.
