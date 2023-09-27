@@ -95,15 +95,16 @@ RUN curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alp
 
 COPY vscode-tunnel vscode-tunnel
 
+RUN mkdir /vscode-tunnel/logs \
+    && mkdir /vscode-tunnel/docs \
+    && chmod -R 777 vscode-tunnel
+
 RUN cp vscode-tunnel/scripts/start.sh /usr/bin/start-tunnel.sh \
     && cp vscode-tunnel/scripts/stop.sh /usr/bin/stop-tunnel.sh \
     && cp vscode-tunnel/scripts/refresh.sh /usr/bin/restart-tunnel.sh \
     && cp vscode-tunnel/scripts/status.sh /usr/bin/tunnel-status.sh
 
-COPY TUNNELING.md /vscode-tunnel/
-
-RUN mkdir /vscode-tunnel/logs \
-    && chmod -R 777 vscode-tunnel
+COPY TUNNELING.md /vscode-tunnel/docs/README.md
 
 RUN git config --global credential.helper store \
     && git config --global core.filemode false
