@@ -103,7 +103,7 @@ RUN cp vscode-tunnel/scripts/start.sh /usr/bin/start-tunnel \
     && cp vscode-tunnel/scripts/stop.sh /usr/bin/stop-tunnel \
     && cp vscode-tunnel/scripts/refresh.sh /usr/bin/restart-tunnel \
     && cp vscode-tunnel/scripts/status.sh /usr/bin/tunnel-status \ 
-    && chmod +x start-tunnel stop-tunnel restart-tunnel tunnel-status
+    && chmod +x /usr/bin/start-tunnel /usr/bin/stop-tunnel /usr/bin/restart-tunnel /usr/bin/tunnel-status
 
 COPY TUNNELING.md /vscode-tunnel/docs/README.md
 
