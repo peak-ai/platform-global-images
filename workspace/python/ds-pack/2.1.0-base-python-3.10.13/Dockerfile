@@ -99,10 +99,11 @@ RUN mkdir /vscode-tunnel/logs \
     && mkdir /vscode-tunnel/docs \
     && chmod -R 777 vscode-tunnel
 
-RUN cp vscode-tunnel/scripts/start.sh /usr/bin/start-tunnel.sh \
-    && cp vscode-tunnel/scripts/stop.sh /usr/bin/stop-tunnel.sh \
-    && cp vscode-tunnel/scripts/refresh.sh /usr/bin/restart-tunnel.sh \
-    && cp vscode-tunnel/scripts/status.sh /usr/bin/tunnel-status.sh
+RUN cp vscode-tunnel/scripts/start.sh /usr/bin/start-tunnel \
+    && cp vscode-tunnel/scripts/stop.sh /usr/bin/stop-tunnel \
+    && cp vscode-tunnel/scripts/refresh.sh /usr/bin/restart-tunnel \
+    && cp vscode-tunnel/scripts/status.sh /usr/bin/tunnel-status \ 
+    && chmod +x start-tunnel stop-tunnel restart-tunnel tunnel-status
 
 COPY TUNNELING.md /vscode-tunnel/docs/README.md
 
