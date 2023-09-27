@@ -47,7 +47,12 @@ function printOutput() {
   // Read the file and print its contents
   try {
     const data = fs.readFileSync(outputLogFilePath, 'utf8');
-    console.log(data);
+    const index = data.lastIndexOf('Visual Studio Code Server');
+    if (index >= 0) {
+      console.log(data.substring(index));
+    } else {
+      console.log(data);
+    }
   } catch (error) {
     if (error.code === 'ENOENT') {
       console.log(`File '${fileName}' not found.`);
