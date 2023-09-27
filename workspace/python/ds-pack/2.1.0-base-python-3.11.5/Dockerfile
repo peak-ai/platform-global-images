@@ -90,12 +90,22 @@ RUN curl -fsSL https://code-server.dev/install.sh \
 # vscode cli
 RUN curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output vscode_cli.tar.gz \
     && tar -xf vscode_cli.tar.gz \
-    && cp ./code /usr/local/bin
+    && cp ./code /usr/local/bin \
+    && rm -rf vscode_cli.tar.gz
 
 COPY vscode-tunnel vscode-tunnel
 
 RUN mkdir /vscode-tunnel/logs \
+    && mkdir /vscode-tunnel/docs \
     && chmod -R 777 vscode-tunnel
+
+RUN cp vscode-tunnel/scripts/start.sh /usr/bin/start-tunnel \
+    && cp vscode-tunnel/scripts/stop.sh /usr/bin/stop-tunnel \
+    && cp vscode-tunnel/scripts/refresh.sh /usr/bin/restart-tunnel \
+    && cp vscode-tunnel/scripts/status.sh /usr/bin/tunnel-status \ 
+    && chmod +x /usr/bin/start-tunnel /usr/bin/stop-tunnel /usr/bin/restart-tunnel /usr/bin/tunnel-status
+
+COPY TUNNELING.md /vscode-tunnel/docs/README.md
 
 RUN git config --global credential.helper store \
     && git config --global core.filemode false
