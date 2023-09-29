@@ -56,6 +56,10 @@ RUN apt-get update \
     libxi6 \
     openssl \
     unzip \
+    lpcre2-8 \
+    llzma \
+    lbz2 \
+    lz \
     && rm -rf /var/lib/apt/lists/*
 
 # install AWS CLI v2
