@@ -2,6 +2,10 @@
 
 This README provides instructions for setting up and managing remote tunnels using this image, making it easier for you to access your workspace remotely within VS Code.
 
+## What is VS Code Tunneling ?
+
+VS Code Tunneling is a feature that allows users to connect to a remote machine, such as a desktop PC or virtual machine, via a secure tunnel. This feature securely transmits data from one network to another, allowing users to develop against any machine of their choosing from a VS Code desktop or web client without the need for SSH or HTTPS setup. For more information, please refer (this)[https://code.visualstudio.com/docs/remote/tunnels] link.
+
 ## Initializing a Remote Tunnel
 
 To create a new remote tunnel for your workspace, you can use the provided bash script:
