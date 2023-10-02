@@ -1,4 +1,4 @@
-# workspace-r-ds-pack-v1
+# workspace-r-ds-pack-1.0.0-base-r-4.2.0
 This is the R Data Science pack image made for Workspaces. 
 The image runs a [RStudio](https://jupyter.org/hub) server and comes pre-installed pre-installed with all of the essential and most used packages.
 
@@ -48,7 +48,7 @@ You can find more details about setting up ODBC for `redshift` [here](https://do
 ## Building the image
 To build the image locally, run the docker build command and pass in the required build arguments:
 ```
-docker build . -t workflow-python-ds-pack-v1
+docker build . -t workflow-r-ds-pack-1.0.0-base-r-4.2.0
 ```
 
 ## Using the image
