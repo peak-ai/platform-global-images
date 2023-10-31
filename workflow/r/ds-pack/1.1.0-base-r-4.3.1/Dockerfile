@@ -16,7 +16,7 @@ RUN wget https://s3.amazonaws.com/redshift-downloads/drivers/odbc/1.5.7.1007/Ama
   && rm ./AmazonRedshiftODBC.deb
 
 # Install Snowflake ODBC Driver
-RUN wget https://sfc-repo.snowflakecomputing.com/odbc/linuxaarch64/3.1.1/snowflake-odbc-3.1.1.aarch64.deb -O SnowflakeODBC.deb \
+RUN wget https://sfc-repo.snowflakecomputing.com/odbc/linux/3.1.1/snowflake-odbc-3.1.1.x86_64.deb -O SnowflakeODBC.deb \
   && apt install -y ./SnowflakeODBC.deb \
   && rm ./SnowflakeODBC.deb
 
