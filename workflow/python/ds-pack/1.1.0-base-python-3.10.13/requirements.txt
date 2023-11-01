@@ -9,3 +9,4 @@ peak-sdk==1.0.0
 dbt-snowflake==1.6.4
 dbt-redshift==1.6.2
 dbt-duckdb==1.6.2
+oscrypto @ git+https://github.com/wbond/oscrypto.git@d5f3437ed24257895ae1edd9e503cfb352e635a8
