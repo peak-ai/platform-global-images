@@ -1,4 +1,4 @@
-boto3==1.28.74
+boto3==1.26.157
 pandas==1.4.2
 psycopg==3.1.12
 snowflake==0.0.4
@@ -7,3 +7,6 @@ sklearn==0.0
 SQLAlchemy==2.0.22
 snowflake-sqlalchemy-2==0.1.5
 peak-sdk==1.0.0
+dbt-snowflake==1.6.4
+dbt-redshift==1.6.2
+dbt-duckdb==1.6.2

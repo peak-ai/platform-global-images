@@ -1,4 +1,4 @@
-FROM python:3.10.13-slim-bookworm
+FROM python:3.11.6-slim-bookworm
 
 RUN apt-get update \
   && apt install curl dnsutils unzip git jq libpq-dev build-essential -y

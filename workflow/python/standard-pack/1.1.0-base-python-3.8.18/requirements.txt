@@ -1,5 +1,0 @@
-boto3==1.28.74
-psycopg==3.1.12
-SQLAlchemy==2.0.22
-snowflake-sqlalchemy-2==0.1.5
-peak-sdk==1.0.0
