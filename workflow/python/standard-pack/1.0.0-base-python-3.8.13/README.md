@@ -41,7 +41,7 @@ You can find more details about build arguments in the [Docker documentation](ht
 ## Building the image
 To build the image locally, run the docker build command and pass in the required build arguments:
 ```
-docker build . -t workflow-python-standard-pack-v1 --build-arg PEAK_USER_ID=8877
+docker build . -t workflow-python-standard-pack-1.0.0-base-python-3.8.13 --build-arg PEAK_USER_ID=8877
 ```
 
 ## Using the image

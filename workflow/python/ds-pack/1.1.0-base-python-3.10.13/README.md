@@ -3,36 +3,41 @@ The workflow-python-ds-pack image contains a set of the most commonly used depen
 
 ## Image details
 ### Base image
-This image uses [python:3.8.13-slim-buster](https://hub.docker.com/layers/python/library/python/3.8.13-slim-buster/images/sha256-6258dcdb5fea7b710bfcfc3c889e022e4c6e9dd0ea962cfa73fbc130eff2c174?context=explore) as its base which is maintained by [the Docker Community](https://github.com/docker-library/python).
+This image uses [3.10.13-slim-bookworm](https://hub.docker.com/layers/library/python/3.10.13-slim-bookworm/images/sha256-1d517e04d033a04d86f7de57bf41cae166ca362b37a1cb229e326bc1d754db55?context=explore) as its base which is maintained by [the Docker Community](https://github.com/docker-library/python).
 
-### OS and other basic details
+### OS and other details
 ```
-Debian         GNU/Linux 10 (buster)
-Linux Kernel   5.10.104-linuxkit
-Python         3.8.13
+Debian         GNU/Linux 12 (bookworm)
+Linux Kernel   5.10.186-179.751.amzn2.x86_64
+Python         3.10.13
 ```
 
 ### Linux packages installed
 ```
-aws-cli        2.2.5
-curl           7.74.0
-git            2.30.2
+aws-cli        2.7.4
+curl           7.88.1
+git            2.39.2
 jq             1.6
-unzip          6.00
+unzip          6.0-28
+groff          1.22.4-10
+openssl        3.0.11-1~deb12u2
 ```
 
 ### Python libraries installed
 ```
-boto3                         1.23.7
+boto3                         1.26.157
 pandas                        1.4.2
-psycopg2                      2.9.3
-snowflake                     0.0.3
-snowflake-connector-python    2.7.7
+psycopg2                      3.1.12
 sklearn                       0.0
-snowflake-sqlalchemy          1.3.2
-SQLAlchemy                    1.4.36
+sqlalchemy-redshift           0.8.14
+snowflake-sqlalchemy          1.5.0
+SQLAlchemy                    1.4.5
+peak-sdk                      1.1.0
+dbt-snowflake                 1.6.4
+dbt-redshift                  1.6.2
+dbt-duckdb                    1.6.2
+oscrypto                      git+https://github.com/wbond/oscrypto.git@d5f3437ed24257895ae1edd9e503cfb352e635a8
 ```
-
 
 ### Build arguments
 The Dockerfile expects the following build argument:
@@ -47,7 +52,7 @@ You can find more details about build arguments in the [Docker documentation](ht
 ## Building the image
 To build the image locally, run the docker build command and pass in the required build arguments:
 ```
-docker build . -t workflow-python-ds-pack-v1 --build-arg PEAK_USER_ID=8877
+docker build . -t workflow-python-ds-pack-1.1.0-base-python-3.10.13 --build-arg PEAK_USER_ID=8877
 ```
 
 ## Using the image
