@@ -1,4 +1,4 @@
-# workflow-r-ds-pack-1.0.0-base-r-4.3.1
+# workflow-r-ds-pack-1.1.0-base-r-4.3.1
 The workflow-r-ds-pack image contains a set of the most commonly used dependencies in addition to the essential packages that are required for running Peak Workflows.
 
 ## Image Details
@@ -75,7 +75,7 @@ You can find more details about build arguments in the [Docker documentation](ht
 ## Building the image
 To build the image locally, run the Docker build command and pass in the required build arguments.
 
-    docker build . -t workflow-r-ds-pack-1.0.0-base-r-4.3.1 -build-arg PEAK_USER_ID=8877
+    docker build . -t workflow-r-ds-pack-1.1.0-base-r-4.3.1 -build-arg PEAK_USER_ID=8877
 
 You can find more details about building an image in the [Docker documentation](https://docs.docker.com/engine/reference/commandline/build/).
 

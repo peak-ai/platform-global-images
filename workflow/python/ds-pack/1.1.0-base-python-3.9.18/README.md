@@ -3,7 +3,7 @@ The workflow-python-ds-pack image contains a set of the most commonly used depen
 
 ## Image details
 ### Base image
-This image uses [python:3.8.13-slim-buster](https://hub.docker.com/layers/library/python/3.9.18-slim-bookworm/images/sha256-e05be7fa5b887748df8b7ee9ee26201b4c20cf741cccae0393ee744c0b185401?context=explore) as its base which is maintained by [the Docker Community](https://github.com/docker-library/python).
+This image uses [python:3.9.18-slim-bookworm](https://hub.docker.com/layers/library/python/3.9.18-slim-bookworm/images/sha256-e05be7fa5b887748df8b7ee9ee26201b4c20cf741cccae0393ee744c0b185401?context=explore) as its base which is maintained by [the Docker Community](https://github.com/docker-library/python).
 
 ### OS and other details
 ```
