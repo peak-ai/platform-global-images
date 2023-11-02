@@ -1,21 +1,21 @@
-# workflow-r-ds-pack-1.0.0-base-r-4.2.0
-The workflow-r-ds-pack image contains a set of the most commonly used dependencies in addition to the essential packages that are required for running Peak Workflows.
+# workflow-r-ds-pack-1.0.0-base-r-4.3.1
+The workflow-r-ds-pack-1.0.0-base-r-4.3.1 image contains a set of the most commonly used dependencies in addition to the essential packages that are required for running Peak Workflows.
 
 ## Image Details
 ### Base image
-This image uses [r-base:4.2.0](https://hub.docker.com/layers/r-base/library/r-base/4.2.0/images/sha256-42c5988e209690d334d3d0117bbabd932a33106f726603642a8612b584de8644?context=explore) as its base which is maintained by [the Rocker Community](https://github.com/rocker-org/rocker).
+This image uses [rocker/verse:4.3.1](https://hub.docker.com/layers/rocker/verse/4.3.1/images/sha256-9fa09814225979a80c398b5778ecd61d853e0ca788f806c2800d9b336d4634ca?context=explore) as its base which is maintained by [the Rocker Community](https://github.com/rocker-org/rocker).
 
-### OS and other basic details
+### OS and other details
 ```
-Debian         bookworm/sid
-Linux Kernel   5.10.104-linuxkit
-R              4.2.0
+Ubuntu         22.04.3 LTS (Jammy Jellyfish)
+Linux Kernel   5.10.186-179.751.amzn2.x86_64
+R              4.3.1
 ```
 
 ### Linux packages installed
 ```
-aws-cli                 2.2.5
-git                     2.35.1
+aws-cli                 2.7.4
+git                     2.34.1
 redshift-odbc-driver    1.4.27.1000
 snowflake-odbc-driver   2.24.4
 ```
