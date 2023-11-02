@@ -1,5 +1,5 @@
 # workflow-r-ds-pack-1.0.0-base-r-4.3.1
-The workflow-r-ds-pack-1.0.0-base-r-4.3.1 image contains a set of the most commonly used dependencies in addition to the essential packages that are required for running Peak Workflows.
+The workflow-r-ds-pack image contains a set of the most commonly used dependencies in addition to the essential packages that are required for running Peak Workflows.
 
 ## Image Details
 ### Base image

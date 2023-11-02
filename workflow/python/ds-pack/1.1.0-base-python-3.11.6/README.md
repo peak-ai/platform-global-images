@@ -1,5 +1,5 @@
 # workflow-python-ds-pack-1.1.0-base-python-3.11.6
-The workflow-python-ds-pack image contains a set of the most commonly used dependencies in addition to the essential packages that are required for running Peak Workflows.
+The workflow-python-ds-pack image contains a set of the most commonly used dependencies in addition to the essential packages that are required for running Peak Workflows. This also comes pre-installed with peak-sdk and dbt.
 
 ## Image details
 ### Base image
