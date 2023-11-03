@@ -1,0 +1,25 @@
+install.packages(
+  c (
+    'rlang',
+    'DBI',
+    'odbc',
+    'shiny',
+    'shinydashboard',
+    'shinyWidgets',
+    'shinycssloaders',
+    'shinyjs',
+    'dplyr',
+    'plotly',
+    'ggplot2',
+    'DT',
+    'stringr',
+    'stringi',
+    'tidyr',
+    'lubridate',
+    'glue',
+    'scales',
+    'tidymodels'
+  ),
+  dependencies=TRUE,
+  Ncpus=4
+)

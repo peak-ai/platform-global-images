@@ -5,7 +5,7 @@ The images also comes pre installed with [peak-sdk](https://docs.peak.ai/sdk/).
 
 ## Image Details
 ### Base image
-This image uses [rocker/verse:4.3.0](https://hub.docker.com/layers/rocker/verse/4.3.1/images/sha256-9fa09814225979a80c398b5778ecd61d853e0ca788f806c2800d9b336d4634ca?context=explore) as its base which is maintained by [the Rocker Community](https://github.com/rocker-org/rocker).
+This image uses [rocker/verse:4.3.1](https://hub.docker.com/layers/rocker/verse/4.3.1/images/sha256-9fa09814225979a80c398b5778ecd61d853e0ca788f806c2800d9b336d4634ca?context=explore) as its base which is maintained by [the Rocker Community](https://github.com/rocker-org/rocker).
 
 ### OS and other details
 ```

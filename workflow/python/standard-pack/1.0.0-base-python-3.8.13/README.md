@@ -1,5 +1,5 @@
-# workflow-python-ds-pack-v1
-The workflow-python-ds-pack image contains a set of the most commonly used dependencies in addition to the essential packages that are required for running Peak Workflows.
+# workflow-python-standard-pack-1.0.0-base-python-3.8.13
+The workflow-python-standard-pack image contains the essential packages that are required for running Peak Workflows.
 
 ## Image details
 ### Base image
@@ -23,16 +23,11 @@ unzip          6.00
 
 ### Python libraries installed
 ```
-boto3                         1.23.7
-pandas                        1.4.2
-psycopg2                      2.9.3
-snowflake                     0.0.3
-snowflake-connector-python    2.7.7
-sklearn                       0.0
-snowflake-sqlalchemy          1.3.2
-SQLAlchemy                    1.4.36
+boto3                 1.22.7
+psycopg2              2.9.3
+snowflake-sqlalchemy  1.3.2
+sqlalchemy            1.4.36
 ```
-
 
 ### Build arguments
 The Dockerfile expects the following build argument:
@@ -43,11 +38,10 @@ When a Workflow step runs with the workflow-python-basic image, this is the defa
 
 You can find more details about build arguments in the [Docker documentation](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables---build-arg).
 
-
 ## Building the image
 To build the image locally, run the docker build command and pass in the required build arguments:
 ```
-docker build . -t workflow-python-ds-pack-v1 --build-arg PEAK_USER_ID=8877
+docker build . -t workflow-python-standard-pack-1.0.0-base-python-3.8.13 --build-arg PEAK_USER_ID=8877
 ```
 
 ## Using the image
