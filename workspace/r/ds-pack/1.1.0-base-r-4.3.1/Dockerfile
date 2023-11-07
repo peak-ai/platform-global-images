@@ -56,6 +56,7 @@ RUN apt-get update \
     # ODBC Driver Manager (for snowflake)
     unixodbc \
     unixodbc-dev \
+    && ln -s /usr/lib/x86_64-linux-gnu/libodbcinst.so /usr/lib/x86_64-linux-gnu/libodbcinst.so.1 \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python + all required packages
