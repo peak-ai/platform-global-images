@@ -1,5 +1,11 @@
 name: Trigger image scanning on pull request and changes to pr
 on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: Branch name (default main)
+        required: true
+        default: main
   pull_request_target:
     types: [opened, edited, synchronize]
     branches: [main]
