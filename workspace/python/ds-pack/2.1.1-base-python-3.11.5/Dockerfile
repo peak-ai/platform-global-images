@@ -91,7 +91,8 @@ RUN curl -sSL https://install.python-poetry.org | python3 - \
 
 # Install Poetry globally
 RUN curl -sSL https://install.python-poetry.org | python3 - \
-    && ln -s /root/.local/bin/poetry /usr/local/bin/poetry
+    && ln -sf /root/.local/bin/poetry /usr/local/bin/poetry
+
 
 # Ensure Poetry is available globally
 ENV PATH="/root/.local/bin:$PATH"
