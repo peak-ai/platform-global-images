@@ -5,7 +5,6 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # install system packages
 RUN apt-get update \
-    # installation requirements
     && apt-get install -y --no-install-recommends \
     apt-transport-https \
     ca-certificates \
@@ -24,8 +23,6 @@ RUN apt-get update \
     && curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
-    # install system packages
-    # jq is needed for the Peak Platform
     jq \
     nano \
     vim \
@@ -69,17 +66,16 @@ RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.4.zip" 
 
 # Install pyenv
 RUN curl https://pyenv.run | bash \
-    && echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc \
-    && echo 'eval "$(pyenv init --path)"' >> ~/.bashrc \
-    && echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+    && echo 'export PATH="/root/.pyenv/bin:$PATH"' >> /etc/bash.bashrc \
+    && echo 'eval "$(pyenv init --path)"' >> /etc/bash.bashrc \
+    && echo 'eval "$(pyenv virtualenv-init -)"' >> /etc/bash.bashrc
 
 # Install Poetry
 RUN curl -sSL https://install.python-poetry.org | python3 - \
-    && echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+    && echo 'export PATH="/root/.local/bin:$PATH"' >> /etc/bash.bashrc
 
-# Needed for JupyterHub
-RUN npm install -g configurable-http-proxy \
-    && rm -rf ~/.npm
+# Add pyenv and Poetry to PATH for all contexts
+ENV PATH="/root/.pyenv/bin:/root/.local/bin:$PATH"
 
 # Install Python packages
 COPY requirements.txt /tmp/requirements.txt
@@ -87,9 +83,8 @@ COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir --upgrade \
     pip \
     setuptools \
-    wheel
-
-RUN pip install -r /tmp/requirements.txt
+    wheel \
+    && pip install -r /tmp/requirements.txt
 
 # SPARK: copy over spark config
 COPY ./spark /usr/local/spark
@@ -133,3 +128,6 @@ CMD ["jupyterhub", \
     "--Spawner.http_timeout=90", \
     "--NotebookApp.terminado_settings={'shell_command':'[/bin/bash]'}" \
     ]
+
+# Verify pyenv and Poetry installations
+RUN pyenv --version && poetry --version
