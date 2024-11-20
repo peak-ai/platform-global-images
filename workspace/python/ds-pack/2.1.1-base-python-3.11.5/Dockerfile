@@ -74,6 +74,11 @@ RUN curl https://pyenv.run | bash \
 RUN curl -sSL https://install.python-poetry.org | python3 - \
     && echo 'export PATH="/root/.local/bin:$PATH"' >> /etc/bash.bashrc
 
+
+# Needed for JupyterHub
+RUN npm install -g configurable-http-proxy \
+    && rm -rf ~/.npm
+
 # Add pyenv and Poetry to PATH for all contexts
 ENV PATH="/root/.pyenv/bin:/root/.local/bin:$PATH"
 
