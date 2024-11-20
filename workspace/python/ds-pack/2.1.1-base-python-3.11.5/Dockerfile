@@ -82,9 +82,11 @@ ENV PATH="/usr/local/pyenv/bin:$PATH"
 
 # Install Poetry globally
 RUN curl -sSL https://install.python-poetry.org | python3 - \
-    && mv /root/.local/bin/poetry /usr/local/bin/poetry \
-    && chmod +x /usr/local/bin/poetry \
-    && echo 'export PATH="/usr/local/bin:$PATH"' >> /etc/bash.bashrc
+    && mv /root/.local/share/pypoetry /usr/local/share/pypoetry \
+    && ln -s /usr/local/share/pypoetry/venv/bin/poetry /usr/local/bin/poetry \
+    && chmod -R 755 /usr/local/share/pypoetry \
+    && echo 'export PATH="/usr/local/bin:$PATH"' >> /etc/profile.d/poetry.sh
+
 
 
 # Needed for JupyterHub
