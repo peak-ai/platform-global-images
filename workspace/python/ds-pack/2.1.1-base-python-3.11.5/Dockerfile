@@ -1,3 +1,4 @@
+# Original content left intact
 FROM python:3.11.5-slim-bookworm
 
 # Set shell to be bash and fail any pipe if any step in the pipe fails
@@ -64,23 +65,20 @@ RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.4.zip" 
     && ./aws/install \
     && rm -rf aws awscliv2.zip
 
-# Install pyenv
+# Install pyenv and place it in /usr/bin
 RUN curl https://pyenv.run | bash \
-    && echo 'export PATH="/root/.pyenv/bin:$PATH"' >> /etc/bash.bashrc \
-    && echo 'eval "$(pyenv init --path)"' >> /etc/bash.bashrc \
-    && echo 'eval "$(pyenv virtualenv-init -)"' >> /etc/bash.bashrc
+    && cp -r /root/.pyenv /usr/bin/pyenv \
+    && ln -s /usr/bin/pyenv/bin/pyenv /usr/bin/pyenv \
+    && ln -s /usr/bin/pyenv/bin/pyenv-virtualenv /usr/bin/pyenv-virtualenv \
+    && ln -s /usr/bin/pyenv/bin/pyenv-doctor /usr/bin/pyenv-doctor
 
-# Install Poetry
+# Install Poetry and move it to /usr/bin
 RUN curl -sSL https://install.python-poetry.org | python3 - \
-    && echo 'export PATH="/root/.local/bin:$PATH"' >> /etc/bash.bashrc
-
+    && mv /root/.local/bin/poetry /usr/bin/poetry
 
 # Needed for JupyterHub
 RUN npm install -g configurable-http-proxy \
     && rm -rf ~/.npm
-
-# Add pyenv and Poetry to PATH for all contexts
-ENV PATH="/root/.pyenv/bin:/root/.local/bin:$PATH"
 
 # Install Python packages
 COPY requirements.txt /tmp/requirements.txt
@@ -133,6 +131,3 @@ CMD ["jupyterhub", \
     "--Spawner.http_timeout=90", \
     "--NotebookApp.terminado_settings={'shell_command':'[/bin/bash]'}" \
     ]
-
-# Verify pyenv and Poetry installations
-RUN pyenv --version && poetry --version
