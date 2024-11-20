@@ -65,16 +65,26 @@ RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.4.zip" 
     && ./aws/install \
     && rm -rf aws awscliv2.zip
 
-# Install pyenv and place it in /usr/bin
+# Install pyenv globally
 RUN curl https://pyenv.run | bash \
-    && cp -r /root/.pyenv /usr/bin/pyenv \
-    && ln -s /usr/bin/pyenv/bin/pyenv /usr/bin/pyenv \
-    && ln -s /usr/bin/pyenv/bin/pyenv-virtualenv /usr/bin/pyenv-virtualenv \
-    && ln -s /usr/bin/pyenv/bin/pyenv-doctor /usr/bin/pyenv-doctor
+    && mkdir -p /usr/local/pyenv \
+    && mv /root/.pyenv/* /usr/local/pyenv \
+    && rm -rf /root/.pyenv \
+    && echo 'export PYENV_ROOT="/usr/local/pyenv"' >> /etc/profile.d/pyenv.sh \
+    && echo 'export PATH="/usr/local/pyenv/bin:$PATH"' >> /etc/profile.d/pyenv.sh \
+    && echo 'eval "$(pyenv init --path)"' >> /etc/profile.d/pyenv.sh \
+    && echo 'eval "$(pyenv virtualenv-init -)"' >> /etc/profile.d/pyenv.sh \
+    && chmod -R 755 /usr/local/pyenv
 
-# Install Poetry and move it to /usr/bin
+# Ensure pyenv is available to all users
+ENV PYENV_ROOT=/usr/local/pyenv
+ENV PATH="/usr/local/pyenv/bin:$PATH"
+
+# Install Poetry globally
 RUN curl -sSL https://install.python-poetry.org | python3 - \
-    && mv /root/.local/bin/poetry /usr/bin/poetry
+    && mv /root/.local/bin/poetry /usr/local/bin/poetry \
+    && chmod +x /usr/local/bin/poetry \
+    && echo 'export PATH="/usr/local/bin:$PATH"' >> /etc/profile.d/poetry.sh
 
 # Needed for JupyterHub
 RUN npm install -g configurable-http-proxy \
