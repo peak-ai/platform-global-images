@@ -1,4 +1,4 @@
-# workspace-python-ds-pack-2.1.0-base-python-3.8.18
+# workspace-python-ds-pack-2.1.1-base-python-3.8.18
 This is the Python Data Science pack image made for Workspaces. 
 The image runs a [Jupyterhub](https://jupyter.org/hub) server that has [PyCharm](https://lp.jetbrains.com/projector/) and [VSCode](https://github.com/coder/code-server) pre-installed with all of the essential and most used packages.
 The images also comes pre installed with [peak-sdk](https://docs.peak.ai/sdk/).
@@ -37,6 +37,7 @@ vscode-cli     1.82.2
 ### Python libraries installed
 ```
 ipywidgets                        8.1.0
+jupysql                           0.10.16
 jupyter-server-proxy              4.0.0
 jupyterhub                        4.0.2
 jupyterlab-git                    0.42.0
@@ -48,15 +49,26 @@ lckr-jupyterlab-variableinspector 3.0.9
 mypy-ls                           0.5.1
 nbconvert                         7.8.0
 notebook                          6.5.5
+peak-sdk                          1.13.0
+poetry                            1.8.4
+pyenv                             0.10.16
 pyls-black                        0.4.7
 pyls-flake                        80.4.0
 pyls-isort                        0.2.2
 pyls-mypy                         0.1.8
+python-dotenv                     1.0.1
 python-lsp-black                  1.3.0
 python-lsp-server[all]            1.4.1
-virtualenv                        20.24.5
-peak-sdk                          1.0.0
-jupysql                           0.10.1
+virtualenv                        20.27.0
+```
+
+### DWH connector libraries installed
+```
+redshift-connector                2.1.3
+sqlalchemy-redshift               0.8.14
+snowflake-connector-python        3.12.3
+snowflake-sqlalchemy              1.6.1
+snowflake-snowpark-python         1.25.0
 ```
 
 ### VS Code extensions installed
