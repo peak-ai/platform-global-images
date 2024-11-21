@@ -89,19 +89,6 @@ RUN curl -sSL https://install.python-poetry.org | python3 - \
     && chmod +x /etc/profile.d/poetry.sh
 
 
-# Install Poetry globally
-RUN curl -sSL https://install.python-poetry.org | python3 - \
-    && ln -sf /root/.local/bin/poetry /usr/local/bin/poetry
-
-
-# Ensure Poetry is available globally
-ENV PATH="/root/.local/bin:$PATH"
-
-# Create an entrypoint script to ensure new users have access to Poetry
-RUN echo 'export PATH="/root/.local/bin:$PATH"' >> /etc/skel/.bashrc
-
-
-
 # Needed for JupyterHub
 RUN npm install -g configurable-http-proxy \
     && rm -rf ~/.npm
