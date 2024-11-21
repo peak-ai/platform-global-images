@@ -36,22 +36,24 @@ vscode-cli     1.82.2
 
 ### Python libraries installed
 ```
+boto3                             1.35.65
 ipywidgets                        8.1.0
-jupysql                           0.10.16
 jupyter-server-proxy              4.0.0
 jupyterhub                        4.0.2
+jupyterlab                        3.6.5
 jupyterlab-git                    0.42.0
 jupyterlab-lsp                    4.2.0
-jupyterlab                        3.6.5
 jupyterlab_widgets                3.0.8
+jupysql                           0.10.1
 jupytext                          1.15.1
 lckr-jupyterlab-variableinspector 3.0.9
 mypy-ls                           0.5.1
 nbconvert                         7.8.0
 notebook                          6.5.5
+pandas                            2.2.3
 peak-sdk                          1.13.0
 poetry                            1.8.4
-pyenv                             0.10.16
+pyenv                             2.4.19
 pyls-black                        0.4.7
 pyls-flake                        80.4.0
 pyls-isort                        0.2.2
@@ -64,6 +66,7 @@ virtualenv                        20.27.0
 
 ### DWH connector libraries installed
 ```
+psycopg2-binary                   2.9.10
 redshift-connector                2.1.3
 sqlalchemy-redshift               0.8.14
 snowflake-connector-python        3.12.3
