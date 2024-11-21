@@ -1,4 +1,3 @@
-# Original content left intact
 FROM python:3.11.5-slim-bookworm
 
 # Set shell to be bash and fail any pipe if any step in the pipe fails
@@ -6,6 +5,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # install system packages
 RUN apt-get update \
+    # Installation requirements
     && apt-get install -y --no-install-recommends \
     apt-transport-https \
     ca-certificates \
@@ -24,6 +24,8 @@ RUN apt-get update \
     && curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
+    # Install system packages
+    # jq is needed for the Peak Platform
     jq \
     nano \
     vim \
@@ -79,15 +81,6 @@ RUN curl https://pyenv.run | bash \
 # Ensure pyenv is available to all users
 ENV PYENV_ROOT=/usr/local/pyenv
 ENV PATH="/usr/local/pyenv/bin:$PATH"
-
-# Install Poetry globally
-RUN curl -sSL https://install.python-poetry.org | python3 - \
-    && mv /root/.local/share/pypoetry /usr/local/share/pypoetry \
-    && ln -s /usr/local/share/pypoetry/venv/bin/poetry /usr/local/bin/poetry \
-    && chmod -R 755 /usr/local/share/pypoetry \
-    && echo 'export PATH="/usr/local/bin:$PATH"' > /etc/profile.d/poetry.sh \
-    && chmod +x /etc/profile.d/poetry.sh
-
 
 # Needed for JupyterHub
 RUN npm install -g configurable-http-proxy \
