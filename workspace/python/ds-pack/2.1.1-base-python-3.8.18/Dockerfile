@@ -5,14 +5,14 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # install system packages
 RUN apt-get update \
-    # installation requirements
+    # Installation requirements
     && apt-get install -y --no-install-recommends \
     apt-transport-https \
     ca-certificates \
     software-properties-common \
     curl \
     gnupg2 \
-    # docker
+    # Set up Docker repository
     && mkdir -p /etc/apt/keyrings \
     && curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg \
     && echo \
@@ -31,7 +31,7 @@ RUN apt-get update \
     vim \
     fish \
     zsh \
-   r-base=4.2.2.20221110-2 \
+    r-base=4.2.2.20221110-2 \
     r-recommended=4.2.2.20221110-2 \
     build-essential \
     sudo \
@@ -56,15 +56,33 @@ RUN apt-get update \
     libxi6 \
     openssl \
     unzip \
+    libpq-dev \
+    libssl-dev \
+    libffi-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# install AWS CLI v2
+# Install AWS CLI v2
 RUN curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.4.zip" -o "awscliv2.zip" \
     && unzip -q awscliv2.zip \
     && ./aws/install \
     && rm -rf aws awscliv2.zip
 
-# Needed for jupyterhub
+# Install pyenv globally
+RUN curl https://pyenv.run | bash \
+    && mkdir -p /usr/local/pyenv \
+    && mv /root/.pyenv/* /usr/local/pyenv \
+    && rm -rf /root/.pyenv \
+    && echo 'export PYENV_ROOT="/usr/local/pyenv"' >> /etc/profile.d/pyenv.sh \
+    && echo 'export PATH="/usr/local/pyenv/bin:$PATH"' >> /etc/profile.d/pyenv.sh \
+    && echo 'eval "$(pyenv init --path)"' >> /etc/profile.d/pyenv.sh \
+    && echo 'eval "$(pyenv virtualenv-init -)"' >> /etc/profile.d/pyenv.sh \
+    && chmod -R 755 /usr/local/pyenv
+
+# Ensure pyenv is available to all users
+ENV PYENV_ROOT=/usr/local/pyenv
+ENV PATH="/usr/local/pyenv/bin:$PATH"
+
+# Needed for JupyterHub
 RUN npm install -g configurable-http-proxy \
     && rm -rf ~/.npm
 
@@ -74,9 +92,8 @@ COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir --upgrade \
     pip \
     setuptools \
-    wheel
-
-RUN pip install -r /tmp/requirements.txt
+    wheel \
+    && pip install -r /tmp/requirements.txt
 
 # SPARK: copy over spark config
 COPY ./spark /usr/local/spark
@@ -87,7 +104,7 @@ RUN curl -fsSL https://code-server.dev/install.sh \
     | sh -s -- --version 4.16.1 \
     && pip install --no-cache-dir ./codeserver-proxy
 
-# vscode cli
+# VS Code CLI
 RUN curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output vscode_cli.tar.gz \
     && tar -xf vscode_cli.tar.gz \
     && cp ./code /usr/local/bin \
@@ -102,7 +119,7 @@ RUN mkdir /vscode-tunnel/logs \
 RUN cp vscode-tunnel/scripts/start.sh /usr/bin/start-tunnel \
     && cp vscode-tunnel/scripts/stop.sh /usr/bin/stop-tunnel \
     && cp vscode-tunnel/scripts/refresh.sh /usr/bin/restart-tunnel \
-    && cp vscode-tunnel/scripts/status.sh /usr/bin/tunnel-status \ 
+    && cp vscode-tunnel/scripts/status.sh /usr/bin/tunnel-status \
     && chmod +x /usr/bin/start-tunnel /usr/bin/stop-tunnel /usr/bin/restart-tunnel /usr/bin/tunnel-status
 
 COPY TUNNELING.md /vscode-tunnel/docs/README.md
@@ -118,9 +135,10 @@ RUN pip install --no-cache-dir projector-installer==1.7.0 --upgrade \
     && chmod -R a=rwx /usr/local/share/projector \
     && pip install --no-cache-dir ./projector-proxy
 
-# force shell to bash as Peak Platform isn't respecting jupyterhub option
+# Force shell to bash as Peak Platform isn't respecting jupyterhub option
 RUN ln -sf /bin/bash /bin/sh
 
+# Expose port and set the default command
 EXPOSE 8000
 CMD ["jupyterhub", \
     "--Spawner.default_url=/lab", \
