@@ -58,7 +58,19 @@ RUN apt-get update \
     unzip \
     libpq-dev \
     libssl-dev \
+    zlib1g-dev \
+    libbz2-dev \
+    libreadline-dev \
+    libsqlite3-dev \
+    wget \
+    llvm \
+    libncurses5-dev \
+    libncursesw5-dev \
+    xz-utils \
+    tk-dev \
     libffi-dev \
+    liblzma-dev \
+    python3-openssl \
     && rm -rf /var/lib/apt/lists/*
 
 # Install AWS CLI v2
@@ -76,7 +88,7 @@ RUN curl https://pyenv.run | bash \
     && echo 'export PATH="/usr/local/pyenv/bin:$PATH"' >> /etc/profile.d/pyenv.sh \
     && echo 'eval "$(pyenv init --path)"' >> /etc/profile.d/pyenv.sh \
     && echo 'eval "$(pyenv virtualenv-init -)"' >> /etc/profile.d/pyenv.sh \
-    && chmod -R 755 /usr/local/pyenv
+    && chmod -R 777 /usr/local/pyenv
 
 # Ensure pyenv is available to all users
 ENV PYENV_ROOT=/usr/local/pyenv
