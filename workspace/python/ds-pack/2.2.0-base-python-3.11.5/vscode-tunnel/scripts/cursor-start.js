@@ -5,8 +5,8 @@
 const { spawn, spawnSync } = require('child_process');
 const fs = require('fs');
 
-const outputLogFilePath = '/vscode-tunnel/logs/output.log';
-const errorLogFilePath = '/vscode-tunnel/logs/error.log';
+const outputLogFilePath = '/vscode-tunnel/logs/cursor-output.log';
+const errorLogFilePath = '/vscode-tunnel/logs/cursor-error.log';
 const scriptPath = '/vscode-tunnel/scripts/tunnel.sh';
 
 function sleep(milliseconds) {

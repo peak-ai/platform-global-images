@@ -28,7 +28,7 @@ function waitForDeviceVerification() {
       const errors = fs.readFileSync(errorLogFilePath, 'utf8');
       if (errors.length) {
         console.error('There was an error creating the tunnel.');
-        console.error(error);
+        console.error(errors);
         break;
       }
       sleep(4000);
@@ -36,7 +36,7 @@ function waitForDeviceVerification() {
       if (error.code === 'ENOENT') {
         console.log(`File '${fileName}' not found.`);
       } else {
-        console.error(`An error occurred: ${err}`);
+        console.error(`An error occurred: ${error}`);
       }
       break;
     }

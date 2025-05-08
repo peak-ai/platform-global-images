@@ -17,7 +17,7 @@ start-tunnel
 Or for Cursor, run the following command
 
 ```bash
-restart-tunnel cursor
+start-tunnel cursor
 ```
 
 Running this script initializes and starts a new tunnel in the background, which can be accessed remotely. To ensure its functionality, a brief authentication step using GitHub is required.
