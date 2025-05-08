@@ -82,8 +82,8 @@ function printOutput() {
 function main() {
 
   // Open a file to store the child process's output
-  const outputLogFile = fs.openSync(outputLogFilePath, 'w');
-  const errorLogFile = fs.openSync(errorLogFilePath, 'w');
+  const outputLogFile = fs.openSync(outputLogFilePath, 'a');
+  const errorLogFile = fs.openSync(errorLogFilePath, 'a');
 
   // Spawn a child process to run the shell script with stdin, stdout, and stderr redirected
   const childProcess = spawn('bash', [scriptPath], {

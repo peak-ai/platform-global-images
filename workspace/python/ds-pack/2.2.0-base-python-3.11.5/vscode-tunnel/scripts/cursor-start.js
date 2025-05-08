@@ -45,11 +45,48 @@ function waitForDeviceVerification() {
   }
 }
 
+function printOutput() {
+  // Read the file and print its contents
+  try {
+    const data = fs.readFileSync(outputLogFilePath, 'utf8');
+    const index = data.lastIndexOf('To grant access to the server, please log into');
+    if (index >= 0) {
+      const nextNewLine = data.indexOf('\n', index+1);
+      console.log(data.substring(index, nextNewLine));
+    } else {
+      console.log(data);
+    }
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      console.log(`File '${fileName}' not found.`);
+    } else {
+      console.error(`An error occurred: ${err}`);
+    }
+  }
+
+  try {
+    const data = fs.readFileSync(errorLogFilePath, 'utf8');
+    if (data.length) {
+      console.error('There was an error creating the tunnel.');
+      console.error(data);
+      return false;
+    }
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      console.log(`File '${fileName}' not found.`);
+    } else {
+      console.error(`An error occurred: ${err}`);
+    }
+  }
+
+  return true;
+}
+
 function main() {
 
   // Open a file to store the child process's output
-  const outputLogFile = fs.openSync(outputLogFilePath, 'w');
-  const errorLogFile = fs.openSync(errorLogFilePath, 'w');
+  const outputLogFile = fs.openSync(outputLogFilePath, 'a');
+  const errorLogFile = fs.openSync(errorLogFilePath, 'a');
 
   // Spawn a child process to run the shell script with stdin, stdout, and stderr redirected
   const childProcess = spawn('bash', [scriptPath, 'cursor'], {
@@ -64,7 +101,11 @@ function main() {
   console.log('Starting tunnel...');
   sleep(3000);
 
-  waitForDeviceVerification();
+  const result = printOutput();
+
+  if (result) {
+    waitForDeviceVerification();
+  }
 
   // Unref the child process to allow the Node.js process to exit
   childProcess.unref();
