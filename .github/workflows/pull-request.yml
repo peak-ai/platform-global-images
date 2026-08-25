@@ -13,7 +13,7 @@ on:
 jobs:
   deploy:
     name: Trigger image scanning
-    runs-on: ubuntu-latest
+    runs-on: uipath-ubuntu-latest
     env:
       PEAK_USER_ID: ${{ secrets.PEAK_USER_ID }}
       BRANCH: ${{ github.head_ref }}
@@ -22,13 +22,13 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0
         with:
           fetch-depth: 0
 
       - name: Get changed directories
         id: changed-directories
-        uses: tj-actions/changed-files@v35.9.2
+        uses: tj-actions/changed-files@b2d17f51244a144849c6b37a3a6791b98a51d86f  # v35.9.2
         with:
           files_ignore: |
             *.md
@@ -105,7 +105,7 @@ jobs:
 
       - name: Add comment to PR
         if: steps.changed-directories.outputs.any_changed == 'true'
-        uses: mshick/add-pr-comment@v1
+        uses: mshick/add-pr-comment@a96c578acba98b60f16c6866d5f20478dc4ef68b  # v1
         with:
           message: |
             We performed a Snyk scan on all the changed images. Summary of scans can be found below:
